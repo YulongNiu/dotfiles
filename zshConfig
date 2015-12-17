@@ -56,9 +56,6 @@ plugins=(git)
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
-# Samsung SSD
-export PATH=$PATH:/home/Yulong/Biotools/samsung_magician_dc-v1.0_rtm_p2/64bin/
-
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
@@ -85,4 +82,3 @@ export SSH_KEY_PATH="~/.ssh/dsa_id"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
