@@ -25,7 +25,8 @@ values."
      ;; ----------------------------------------------------------------
      (auto-completion :variables
                       auto-completion-enable-snippets-in-popup t
-                      auto-completion-enable-help-tooltip t)
+                      auto-completion-enable-help-tooltip t
+                      auto-completion-private-snippets-directory "~/RESEARCH/NewRpkg/YulongSpacemacs/snippets/")
      better-defaults
      semantic
      git
