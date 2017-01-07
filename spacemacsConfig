@@ -369,8 +369,7 @@ you should place your code here."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(markdown-command
-   "pandoc -f markdown -t html -s --mathjax=/home/Yulong/Biotools/MathJax-2.5-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML --highlight-style espresso")
-
+   "pandoc -f markdown -t html -s --mathjax --variable 'mathjax-url:https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML' --highlight-style espresso")
  '(smart-compile-alist
    (quote
     ((emacs-lisp-mode emacs-lisp-byte-compile)
