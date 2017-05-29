@@ -57,6 +57,7 @@ values."
      gtags
      emacs-lisp
      python
+     javascript
      html
      ess
      (c-c++ :variables
