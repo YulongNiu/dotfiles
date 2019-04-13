@@ -7,14 +7,14 @@
 # dnf config-manager --set-enabled google-chrome
 # dnf install google-chrome-stable -y
 
-# dnf install -y adobe-source-code-pro-fonts \
+# dnf install -y adobe-source-code-pro-fonts zsh 
 ```
 
 ## 2. Emacs
 
 ```
 $ git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
-$ git 
+$ wget -O ~/.spacemacs https://raw.githubusercontent.com/YulongNiu/dotfiles/master/spacemacsConfig
 ```
 
 ## 3. GitHub
