@@ -5,17 +5,23 @@
 
 $ sudo dnf update -y
 
+## install chrome
 $ sudo dnf install fedora-workstation-repositories
 $ sudo dnf config-manager --set-enabled google-chrome
 $ sudo dnf install google-chrome-stable -y
 
-$ sudo dnf install -y adobe-source-code-pro-fonts zsh
+## fzug Chinese
+$ sudo dnf install https://mirrors.tuna.tsinghua.edu.cn/fzug/free/29/x86_64/fzug-release-29-0.1.noarch.rpm
+
+$ sudo dnf install -y adobe-source-code-pro-fonts zsh sogoupinyin \ 
+       fcitx-{ui-light,qt{4,5},table,gtk{2,3},table-{extra,other,chinese},configtool} \
 ```
 
 ## 2. Zsh
 
 ```
-sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+## 'candy' theme is accommonded
+$ sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 ```
 
 ## 3. Emacs
@@ -42,7 +48,9 @@ $ cat /home/Yulong/.ssh/id_rsa.pub ## add it to GitHub SSH keys
 
 ```
 ## install R packages
-'xml2', 'tidyverse'
+$ sudo R
+> install.packages(c('xml2', 'tidyverse', 'BiocManager', 'RcppArmadillo', 'RcppParallel', 'devtools'))
+> BiocManager::install(c('edgeR', 'DESeq2', 'tximport'))
 ```
 
 ## . Accesories
@@ -50,4 +58,11 @@ $ cat /home/Yulong/.ssh/id_rsa.pub ## add it to GitHub SSH keys
 * Enlarge fonds
 
 * double click
+
+* WPS
+
+```
+wget http://kdl.cc.ksosoft.com/wps-community/download/8372/wps-office-11.1.0.8372-1.x86_64.rpm
+sudo rpm -ivh wps-office-11.1.0.8372-1.x86_64.rpm
+```
 
