@@ -55,11 +55,11 @@ $ cat /home/Yulong/.ssh/id_rsa.pub ## add it to GitHub SSH keys
 ```
 ## install R packages
 $ sudo R
-> install.packages(c('xml2', 'tidyverse', 'BiocManager', 'RcppArmadillo', 'RcppParallel', 'devtools'))
+> install.packages(c('xml2', 'tidyverse', 'BiocManager', 'RcppArmadillo', 'RcppParallel', 'devtools', 'foreach', 'doParallel'))
 > BiocManager::install(c('edgeR', 'DESeq2', 'tximport'))
 ```
 
-## . Accesories
+## 6. Accesories
 
 * Enlarge fonds
 
