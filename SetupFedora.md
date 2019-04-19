@@ -73,6 +73,7 @@ sudo rpm -ivh wps-office-11.1.0.8372-1.x86_64.rpm
 
 ## Missing fonts for WPS: https://github.com/IamDH4/ttf-wps-fonts 
 ```
+
 * [GoldenDict](https://github.com/goldendict/goldendict)
 
 ```
