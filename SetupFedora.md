@@ -33,6 +33,7 @@ $ sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/
 $ git clone https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
 $ echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>! ~/.zshrc
 $ git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
+$ echo 'POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs) POWERLEVEL9K_PROMPT_ADD_NEWLINE=true POWERLEVEL9K_DISABLE_RPROMPT=true' >>! ~/.zshrc
 ```
 
 ## 3. Emacs
