@@ -28,6 +28,11 @@ $ sudo dnf install -y adobe-source-code-pro-fonts zsh sogoupinyin \
 ```
 ## 'candy' theme is accommonded
 $ sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+
+## powerline10k
+$ git clone https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
+$ echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>! ~/.zshrc
+$ git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
 ```
 
 ## 3. Emacs
