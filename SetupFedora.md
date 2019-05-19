@@ -18,6 +18,9 @@ $ sudo dnf install google-chrome-stable -y
 ## fzug Chinese
 $ sudo dnf install https://mirrors.tuna.tsinghua.edu.cn/fzug/free/29/x86_64/fzug-release-29-0.1.noarch.rpm
 
+## pandoc
+$ sudo dnf install pandoc pandoc-citeproc
+
 $ sudo dnf install -y adobe-source-code-pro-fonts zsh sogoupinyin \ 
        fcitx-{ui-light,qt{4,5},table,gtk{2,3},table-{extra,other,chinese},configtool} \
        gperftools-devel
