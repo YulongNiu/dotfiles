@@ -70,7 +70,7 @@ $ cat /home/Yulong/.ssh/id_rsa.pub ## add it to GitHub SSH keys
 ## install R packages
 $ sudo R
 > install.packages(c('xml2', 'tidyverse', 'BiocManager', 'RcppArmadillo', 'RcppParallel', 'devtools', 'foreach', 'doParallel', 'testthat', 'roxygen2', 'e1071', 'gplots', 'dendextend', 'dynamicTreeCut', 'ape', 'magrittr', 'bigmemory', 'knitr', 'rmarkdown'))
-> BiocManager::install(c('edgeR', 'DESeq2', 'tximport', 'rhdf5', 'BiocStyle', 'goseq', 'Biostrings'))
+> BiocManager::install(c('edgeR', 'DESeq2', 'tximport', 'rhdf5', 'BiocStyle', 'goseq', 'Biostrings', 'Rsamtools'))
 ```
 
 ## 6. Accesories
