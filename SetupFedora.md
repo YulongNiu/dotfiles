@@ -18,8 +18,9 @@ $ sudo dnf install google-chrome-stable -y
 ## fzug Chinese
 $ sudo dnf install https://mirrors.tuna.tsinghua.edu.cn/fzug/free/29/x86_64/fzug-release-29-0.1.noarch.rpm
 
-## pandoc
-$ sudo dnf install pandoc pandoc-citeproc
+## pandoc and rmarkdown
+$ sudo dnf install pandoc pandoc-citeproc texlive-titling texlive-framed texlive-nowidow texlive-parnotes \
+       texlive-preprint texlive-marginfix texlive-xstring
 
 $ sudo dnf install -y adobe-source-code-pro-fonts zsh sogoupinyin \ 
        fcitx-{ui-light,qt{4,5},table,gtk{2,3},table-{extra,other,chinese},configtool} \
@@ -69,8 +70,9 @@ $ cat /home/Yulong/.ssh/id_rsa.pub ## add it to GitHub SSH keys
 ```
 ## install R packages
 $ sudo R
-> install.packages(c('xml2', 'tidyverse', 'BiocManager', 'RcppArmadillo', 'RcppParallel', 'devtools', 'foreach', 'doParallel', 'testthat', 'roxygen2', 'e1071', 'gplots', 'dendextend', 'dynamicTreeCut', 'ape', 'magrittr', 'bigmemory', 'knitr', 'rmarkdown'))
+> install.packages(c('xml2', 'tidyverse', 'BiocManager', 'RcppArmadillo', 'RcppParallel', 'devtools', 'foreach', 'doParallel', 'testthat', 'roxygen2', 'e1071', 'gplots', 'dendextend', 'dynamicTreeCut', 'ape', 'magrittr', 'bigmemory', 'knitr', 'rmarkdown', 'tinytex'))
 > BiocManager::install(c('edgeR', 'DESeq2', 'tximport', 'rhdf5', 'BiocStyle', 'goseq', 'Biostrings', 'Rsamtools'))
+> tinytex::install_tinytex()
 ```
 
 ## 6. Accesories
