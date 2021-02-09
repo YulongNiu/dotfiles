@@ -81,8 +81,7 @@ $ sudo R
 * [WPS](https://www.wps.com/linux)
 
 ```
-wget http://kdl.cc.ksosoft.com/wps-community/download/8372/wps-office-11.1.0.8372-1.x86_64.rpm
-sudo rpm -ivh wps-office-11.1.0.8372-1.x86_64.rpm
+## https://linux.wps.com/
 
 ## Missing fonts for WPS: https://github.com/IamDH4/ttf-wps-fonts 
 ```
@@ -94,7 +93,7 @@ $ sudo dnf install bzip2-devel gcc-c++ git hunspell-devel \
        libvorbis-devel libXtst-devel phonon-devel \
        qt-devel qtwebkit ffmpeg ffmpeg-devel \
        lzo lzo-devel eb eb-devel libao libao-devel \
-       qtwebkit-devel libtiff-devel lzma-devel opencc-devel
+       qtwebkit-devel libtiff-devel lzma opencc-devel
        
 $ git clone git://github.com/goldendict/goldendict.git
 $ cd goldendict
