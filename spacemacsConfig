@@ -27,11 +27,10 @@ values."
    ;; If non-nil layers with lazy install support are lazy installed.
    ;; List of additional paths where to look for configuration layers.
    ;; Paths must have a trailing slash (i.e. `~/.mycontribs/')
-   dotspacemacs-configuration-layer-path '("~/RESEARCH/NewRpkg/YulongSpacemacs/")
+   dotspacemacs-configuration-layer-path '("~/RESEARCH/YulongSpacemacs/")
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(
-     ;; ----------------------------------------------------------------
+   '(;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
@@ -39,7 +38,7 @@ values."
      (auto-completion :variables
                       auto-completion-enable-snippets-in-popup t
                       auto-completion-enable-help-tooltip t
-                      auto-completion-private-snippets-directory "~/RESEARCH/NewRpkg/YulongSpacemacs/snippets/")
+                      auto-completion-private-snippets-directory "~/RESEARCH/YulongSpacemacs/snippets/")
      better-defaults
      semantic
      git
@@ -51,6 +50,7 @@ values."
             shell-default-term-shell "/bin/zsh"
             shell-enable-smart-eshell t)
      org
+     yaml
      spell-checking
      syntax-checking
      version-control
