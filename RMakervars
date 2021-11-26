@@ -48,7 +48,7 @@ CXX14STD=-std=c++14
 CXX17STD=-std=c++17
 
 # FLAGS
-STD_FLAGS=-g -O3 -Wall -pedantic -mtune=native -pipe
+STD_FLAGS=-g -O3 -Wall -pedantic -mtune=native -pipe -Wc++17-extensions
 CFLAGS=$(STD_FLAGS)
 CXXFLAGS=$(STD_FLAGS)
 CXX98FLAGS=$(STD_FLAGS)
