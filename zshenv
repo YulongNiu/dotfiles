@@ -2,13 +2,11 @@
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/yulong/.oh-my-zsh"
@@ -86,9 +84,13 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
+export PATH="/usr/local/opt/berkeley-db@4/bin:$PATH"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
+if [[ -z "$LC_ALL" ]]; then
+    export LC_ALL='en_US.UTF-8'
+fi
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -111,9 +113,10 @@ source $ZSH/oh-my-zsh.sh
 # alias proxy='export all_proxy=socks5://127.0.0.1:1080'
 alias proxy='export http_proxy=http://127.0.0.1:1087;export https_proxy=http://127.0.0.1:1087;export ALL_PROXY=socks5://127.0.0.1:1080'
 alias unproxy='unset all_proxy'
-alias l='ls -lhtr'
-source ~/Tools/powerlevel10k/powerlevel10k.zsh-theme
+alias l='exa -lh -sold'
+alias nproc="sysctl -n hw.logicalcpu"
 
+source ~/Tools/powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
@@ -132,3 +135,6 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+
+
+source /Users/yulong/.config/broot/launcher/bash/br
