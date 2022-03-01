@@ -113,7 +113,9 @@ fi
 # alias proxy='export all_proxy=socks5://127.0.0.1:1080'
 alias proxy='export http_proxy=http://127.0.0.1:1087;export https_proxy=http://127.0.0.1:1087;export ALL_PROXY=socks5://127.0.0.1:1080'
 alias unproxy='unset all_proxy'
-alias l='exa -lh -sold'
+alias l='exa -lh -sold --git'
+alias ltree='exa -lh -sold --git --tree'
+alias ltree2='exa -lh -sold --git --tree --level=2'
 alias nproc="sysctl -n hw.logicalcpu"
 
 source ~/Tools/powerlevel10k/powerlevel10k.zsh-theme
