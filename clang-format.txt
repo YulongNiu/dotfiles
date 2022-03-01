@@ -1,6 +1,8 @@
 ---
 Language: Cpp
 
+# Directly adopted from https://github.com/Reewr/master/blob/master/.clang-format
+
 # We'll base this LLVM style, but change some stuff
 BasedOnStyle: LLVM
 
@@ -91,7 +93,7 @@ AllowAllParametersOfDeclarationOnNextLine: false
 # Allows contracting simple braced statements to a single line.
 #
 # E.g., this allows if (a) { return; } to be put on a single line.
-AllowShortBlocksOnASingleLine: false
+AllowShortBlocksOnASingleLine: true
 
 # If true, short case labels will be contracted to a single line.
 AllowShortCaseLabelsOnASingleLine: false
@@ -107,7 +109,7 @@ AllowShortCaseLabelsOnASingleLine: false
 AllowShortFunctionsOnASingleLine: Inline
 
 # If true, if (a) return; can be put on a single line.
-AllowShortIfStatementsOnASingleLine: false
+AllowShortIfStatementsOnASingleLine: true
 
 # If true, while (true) continue; can be put on a single line.
 AllowShortLoopsOnASingleLine: false
@@ -285,7 +287,7 @@ MaxEmptyLinesToKeep: 2
 #   NI_All (in configuration: All)
 #     Indent in all namespaces.
 #
-NamespaceIndentation: All
+NamespaceIndentation: None
 
 # Pointer and reference alignment style.
 #
