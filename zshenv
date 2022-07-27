@@ -116,6 +116,8 @@ alias unproxy='unset all_proxy'
 alias l='exa -lh -sold --git'
 alias ltree='exa -lh -sold --git --tree'
 alias ltree2='exa -lh -sold --git --tree --level=2'
+alias c='clear'
+alias cl='c; l'
 alias nproc="sysctl -n hw.logicalcpu"
 
 source ~/Tools/powerlevel10k/powerlevel10k.zsh-theme
@@ -140,3 +142,8 @@ unset __conda_setup
 
 
 source /Users/yulong/.config/broot/launcher/bash/br
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+ eval "$(pyenv init -)"
+fi
