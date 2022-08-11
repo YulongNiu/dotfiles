@@ -17,7 +17,8 @@ HI=/usr/local/include
 
 # MacOS Xcode header location
 # (do "xcrun -show-sdk-path" in terminal to get path)
-XH=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk
+# XH=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk
+XH=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk
 
 # ccache
 CCACHE=$(HB)/ccache
@@ -26,7 +27,7 @@ CCACHE=$(HB)/ccache
 MAKE=make -j16
 
 # GNU version
-GNU_VER=11
+GNU_VER=12
 
 # LLVM (Clang) compiler options
 CC=$(CCACHE) $(HO)/llvm/bin/clang
@@ -48,7 +49,7 @@ CXX14STD=-std=c++14
 CXX17STD=-std=c++17
 
 # FLAGS
-STD_FLAGS=-g -O3 -Wall -pedantic -mtune=native -pipe -Wc++17-extensions
+STD_FLAGS=-g -O3 -Wall -pedantic -mtune=native -pipe
 CFLAGS=$(STD_FLAGS)
 CXXFLAGS=$(STD_FLAGS)
 CXX98FLAGS=$(STD_FLAGS)
