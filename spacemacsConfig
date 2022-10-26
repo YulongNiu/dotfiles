@@ -75,9 +75,10 @@ This function should only modify configuration layer settings."
             c-c++-adopt-subprojects t)
      ibuffer
      docker
-     helm
      multiple-cursors
      treemacs
+     helm
+     xkcd
      yulong
      )
 
