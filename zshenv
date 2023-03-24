@@ -89,7 +89,7 @@ export PATH="/usr/local/opt/berkeley-db@4/bin:$PATH"
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 if [[ -z "$LC_ALL" ]]; then
-    export LC_ALL='en_US.UTF-8'
+    export LC_ALL="en_US.UTF-8"
 fi
 
 # Preferred editor for local and remote sessions
@@ -111,7 +111,7 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # alias proxy='export all_proxy=socks5://127.0.0.1:1080'
-alias proxy='export http_proxy=http://127.0.0.1:1087;export https_proxy=http://127.0.0.1:1087;export ALL_PROXY=socks5://127.0.0.1:1080'
+alias proxy='export http_proxy=http://127.0.0.1:7890; export https_proxy=http://127.0.0.1:7890; export ALL_PROXY=socks5://127.0.0.1:1080'
 alias unproxy='unset all_proxy'
 alias l='exa -lh -sold --git'
 alias ltree='exa -lh -sold --git --tree'
@@ -140,10 +140,18 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 
-
 source /Users/yulong/.config/broot/launcher/bash/br
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 if command -v pyenv 1>/dev/null 2>&1; then
  eval "$(pyenv init -)"
 fi
+
+# command-not-found
+HB_CNF_HANDLER="$(brew --repository)/Library/Taps/homebrew/homebrew-command-not-found/handler.sh"
+if [ -f "$HB_CNF_HANDLER" ]; then
+    source "$HB_CNF_HANDLER";
+fi
+
+# Following line was automatically added by arttime installer
+export PATH=/Users/yulong/.local/bin:$PATH
