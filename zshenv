@@ -140,6 +140,7 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 
+# pyenv
 source /Users/yulong/.config/broot/launcher/bash/br
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
@@ -155,3 +156,6 @@ fi
 
 # Following line was automatically added by arttime installer
 export PATH=/Users/yulong/.local/bin:$PATH
+
+## llvm
+export PATH="/usr/local/opt/llvm/bin:$PATH"
