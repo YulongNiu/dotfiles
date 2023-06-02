@@ -73,6 +73,8 @@ This function should only modify configuration layer settings."
             c-c++-lsp-enable-semantic-highlight 'rainbow
             c-c++-enable-clang-format-on-save t
             c-c++-adopt-subprojects t)
+     (scheme :variables
+             scheme-implementations '(chez guile racket))
      ibuffer
      docker
      multiple-cursors
@@ -571,7 +573,7 @@ default it calls `spacemacs/load-spacemacs-env' which loads the environment
 variables declared in `~/.spacemacs.env' or `~/.spacemacs.d/.spacemacs.env'.
 See the header of this file for more information."
   (spacemacs/load-spacemacs-env)
-)
+  )
 
 (defun dotspacemacs/user-init ()
   "Initialization for user code:
@@ -579,14 +581,15 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
-  (setq-default dotspacemacs-line-numbers '(:relative t
-                                                      :enabled-for-modes prog-mode
-                                                      markdown-mode
-                                                      org-mode
-                                                      :disabled-for-modes dired-mode
-                                                      doc-view-mode
-                                                      pdf-view-mode
-                                                      :size-limit-kb 1000))
+  (setq-default dotspacemacs-line-numbers
+                '(:relative t
+                            :enabled-for-modes prog-mode
+                            markdown-mode
+                            org-mode
+                            :disabled-for-modes dired-mode
+                            doc-view-mode
+                            pdf-view-mode
+                            :size-limit-kb 1000))
   )
 
 
@@ -595,7 +598,7 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
 This function is called only while dumping Spacemacs configuration. You can
 `require' or `load' the libraries of your choice that will be included in the
 dump."
-)
+  )
 
 
 (defun dotspacemacs/user-config ()
@@ -637,7 +640,7 @@ before packages are loaded."
         (append
          '(("\\.Rmd\\'" . markdown-mode))
          auto-mode-alist))
-)
+  )
 
 
 ;; Do not write anything past this comment. This is where Emacs will
