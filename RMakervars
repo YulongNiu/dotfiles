@@ -1,4 +1,4 @@
-## settings from https://firas.io/post/data.table_openmp/
+## settings from https://firas.io/posts/data_table_openmp/
 
 #CC=clang
 #CXX=clang++
@@ -17,8 +17,7 @@ HI=/usr/local/include
 
 # MacOS Xcode header location
 # (do "xcrun -show-sdk-path" in terminal to get path)
-# XH=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk
-XH=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk
+XH=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk
 
 # ccache
 CCACHE=$(HB)/ccache
