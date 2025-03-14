@@ -19,7 +19,7 @@ $ sudo dnf install google-chrome-stable -y
 $ sudo dnf install pandoc pandoc-citeproc texlive-titling texlive-framed texlive-nowidow texlive-parnotes \
        texlive-preprint texlive-marginfix texlive-xstring
 
-$ sudo dnf install -y adobe-source-code-pro-fonts zsh \ 
+$ sudo dnf install -y adobe-source-code-pro-fonts zsh \
        fcitx-{ui-light,qt{4,5},table,gtk{2,3},table-{extra,other,chinese},configtool} \
        gperftools-devel
 ```
@@ -83,7 +83,7 @@ $ sudo R
 ```
 ## https://linux.wps.com/
 
-## Missing fonts for WPS: https://github.com/IamDH4/ttf-wps-fonts 
+## Missing fonts for WPS: https://github.com/IamDH4/ttf-wps-fonts
 ```
 
 * [GoldenDict](https://github.com/goldendict/goldendict)
@@ -94,7 +94,7 @@ $ sudo dnf install bzip2-devel gcc-c++ git hunspell-devel \
        qt-devel qtwebkit ffmpeg ffmpeg-devel \
        lzo lzo-devel eb eb-devel libao libao-devel \
        qtwebkit-devel libtiff-devel lzma opencc-devel
-       
+
 $ git clone git://github.com/goldendict/goldendict.git
 $ cd goldendict
 $ qmake-qt4 "CONFIG+=zim_support" "CONFIG+=chinese_conversion_support" && make
