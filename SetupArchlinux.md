@@ -17,18 +17,29 @@ $ sudo pacman -Syyu
 ### 1.2 Recommend packages
 
 ```
-$ sudo packman -S htop neofetch \
-       fdisk gparted \
-       vim emacs \
+## system monitor
+$ sudo packman -S htop neofetch
+
+## disk management
+$ sudo packman -S ntfs-3g fdisk gparted
+
+## text editor
+$ sudo packman -S vim emacs
+
+## hardinfo2 stress test
+$ sudo packman -S s-tui
 ```
 
 ### 1.3 Chinese input
 
 ```
+## fonts
 $ sudo packman -S adobe-source-han-serif-cn-fonts wqy-zenhei noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
 
-$ sudo pacman -S fcitx5-im fcitx5-chinese-addons fcitx5-pinyin-zhwik fcitx5-material-color
+## fcitx5
+$ sudo packman -S fcitx5-im fcitx5-chinese-addons fcitx5-pinyin-zhwik fcitx5-material-color
 
+## gui-dependent
 $ sudo packman -S kwindowsystem kguiaddons
 ```
 
