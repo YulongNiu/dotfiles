@@ -5,6 +5,7 @@
 Use archinstall:
 
 ```
+## choose KDE desktop
 # archinstall
 ```
 
@@ -17,30 +18,35 @@ $ sudo pacman -Syyu
 ### 1.2 Recommend packages
 
 ```
+## basic development
+$ sudo pacman -S git base-devel
+
 ## system monitor
-$ sudo packman -S htop neofetch
+$ sudo pacman -S htop neofetch
 
 ## disk management
-$ sudo packman -S ntfs-3g fdisk gparted
+$ sudo pacman -S ntfs-3g gparted
 
 ## text editor
-$ sudo packman -S vim emacs
+$ sudo pacman -S vim emacs
 
 ## hardinfo2 stress test
-$ sudo packman -S s-tui
+$ sudo pacman -S s-tui
 ```
 
 ### 1.3 Chinese input
 
 ```
 ## fonts
-$ sudo packman -S adobe-source-han-serif-cn-fonts wqy-zenhei noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
+$ sudo pacman -S adobe-source-han-serif-cn-fonts adobe-source-code-pro-fonts \
+       wqy-zenhei \
+       noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
 
 ## fcitx5
-$ sudo packman -S fcitx5-im fcitx5-chinese-addons fcitx5-pinyin-zhwik fcitx5-material-color
+$ sudo pacman -S fcitx5-im fcitx5-chinese-addons fcitx5-pinyin-zhwik fcitx5-material-color
 
 ## gui-dependent
-$ sudo packman -S kwindowsystem kguiaddons
+$ sudo pacman -S kwindowsystem kguiaddons
 ```
 
 Reboot and add pinyin on the input method list.
@@ -48,8 +54,6 @@ Reboot and add pinyin on the input method list.
 ### 1.3 Blue tooth
 
 ```
-$ sudo pacman -S bluez bluez-utils bluez-obex blueman
-
 ## works even after reboot
 $ sudo systemctl enable bluetooth.service
 
@@ -68,6 +72,14 @@ $ nvidia-detect
 
 ## check nvidia driver status
 $ nvidia-smi
+```
+
+### 1.5 Spacemacs
+
+```
+$ git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+
+$ wget -O ~/.spacemacs https://raw.githubusercontent.com/YulongNiu/dotfiles/master/spacemacsConfig
 ```
 
 Download
