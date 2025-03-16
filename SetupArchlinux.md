@@ -43,10 +43,18 @@ $ sudo pacman -S adobe-source-han-serif-cn-fonts adobe-source-code-pro-fonts \
        noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
 
 ## fcitx5
-$ sudo pacman -S fcitx5-im fcitx5-chinese-addons fcitx5-pinyin-zhwik fcitx5-material-color
+$ sudo pacman -S fcitx5-im fcitx5-chinese-addons fcitx5-configtool fcitx5-material-color
 
 ## gui-dependent
 $ sudo pacman -S kwindowsystem kguiaddons
+```
+
+Add following lines in `/etc/environment`
+
+```
+GTK_IM_MODULE=fcitx
+QT_IM_MODULE=fcitx
+XMODIFIERS=@im=fcitx
 ```
 
 Reboot and add pinyin on the input method list.
