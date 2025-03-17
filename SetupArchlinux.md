@@ -152,8 +152,6 @@ URL localhost:22
 
 ### 2.3 client
 
-
-
 Other setups are also provided on the tunnel.
 
 ### 2.3 Run
