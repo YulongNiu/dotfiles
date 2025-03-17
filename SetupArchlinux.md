@@ -82,7 +82,7 @@ Reboot and add pinyin on the input method list.
 
 ```
 ## works even after reboot
-$ sudo systemctl enable bluetooth.service
+$ sudo systemctl enable --now bluetooth.service
 
 $ sudo systemctl start bluetooth.service
 ```
@@ -114,10 +114,63 @@ $ wget -O ~/.spacemacs https://raw.githubusercontent.com/YulongNiu/dotfiles/mast
 ```
 $ sudo pacman -S openssh
 
-$ sudo systemctl enable sshd.service
+$ sudo systemctl enable --now sshd.service
 $ sudo systemctl start sshd.service
 
 ```
+
+## 2. Cloudflare tunnel
+
+### 2.1 Install Docker
+```
+## install and enable docker
+$ sudo pacman -S docker docker-compose
+
+$ sudo systemctl enable --now docker
+
+## list running docker images
+$ sudo docker ps
+```
+
+### 2.2 Setup Cloudflare
+Setup on Cloudflare left pannel,
+
+```
+Zero Trust --> Networks --> Tunnels --> Select Cloudflared
+
+Name your tunnel: randomly pick a name
+
+## run the docker image on host
+Install and run connectors: Docker
+
+Public Hostnames:
+Subdomain xxx
+Domain yyy
+Type SSH
+URL localhost:22
+```
+
+### 2.3 client
+
+
+
+Other setups are also provided on the tunnel.
+
+### 2.3 Run
+
+```
+docker run cloudflare/cloudflared:latest tunnel \
+       --no-autoupdate run \
+       --token YouTokenByCloudflare
+```
+
+
+## 3. R
+
+```
+```
+
+
 
 ## References
 
