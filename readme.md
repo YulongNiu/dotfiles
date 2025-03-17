@@ -15,6 +15,7 @@
 
 3. [HHKB YDKB](https://ydkb.io/?hhkb_ble)
 
-清除蓝牙配对信息： `LShirt` + `RShift` + `LCtrl` + `R`.
-蓝牙切换：`Fn` + W
+Clear bluetooth paired information: `LShirt` + `RShift` + `LCtrl` + `R`
+
+Switch bluetooth devices: `Fn` + W
 
