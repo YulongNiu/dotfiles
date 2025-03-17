@@ -119,6 +119,8 @@ alias ltree2='lsd --tree --level=2'
 alias c='clear'
 alias cl='c; l'
 alias nproc="sysctl -n hw.logicalcpu"
+alias sshcf="ssh -o ProxyCommand=\"/usr/local/bin/cloudflared access ssh --hostname idv7920.bio-nutshell.org\""
+alias sftpcf="ssh -o ProxyCommand=\"/usr/local/bin/cloudflared access ssh --hostname idv7920.bio-nutshell.org\""
 
 source ~/Tools/powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -182,4 +184,6 @@ export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
 export PATH="/usr/local/opt/gnu-which/libexec/gnubin:$PATH"
 export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
 
+## Visual studio
+export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
 
