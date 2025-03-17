@@ -116,7 +116,6 @@ $ sudo pacman -S openssh
 
 $ sudo systemctl enable --now sshd.service
 $ sudo systemctl start sshd.service
-
 ```
 
 ## 2. Cloudflare tunnel
@@ -148,6 +147,14 @@ Subdomain xxx
 Domain yyy
 Type SSH
 URL localhost:22
+```
+
+```
+## docker image uses the host port directly
+$ sudo docker run --rm --name cloudflared \
+    --network=host \
+    cloudflare/cloudflared:latest tunnel --no-autoupdate \
+    run --token MyToken
 ```
 
 ### 2.3 client
