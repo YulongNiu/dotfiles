@@ -18,7 +18,7 @@ $ sudo pacman -Syyu
 ### 1.2 Recommend packages
 
 ```
-## basic development
+## basic development, #hardinfo2 is not provided
 $ sudo pacman -S git base-devel
 
 ## system monitor
@@ -35,12 +35,14 @@ $ sudo pacman -S s-tui
 
 ## zip archive
 $ sudo pacman -S ark p7zip unrar unarchiver lzop lrzip
+
+## accessoires
+$ sudo pacman -S less git base-devel
 ```
 
 Install yay:
 
 ```
-$ sudo pacman -S --needed git base-devel
 $ git clone https://aur.archlinux.org/yay.git
 $ cd yay
 $ makepkg -si
@@ -48,6 +50,14 @@ $ makepkg -si
 
 ```
 yay
+```
+
+Install paru:
+
+```
+git clone https://aur.archlinux.org/paru.git
+cd paru
+makepkg -si
 ```
 
 ### 1.3 Chinese input
@@ -59,12 +69,16 @@ $ sudo pacman -S adobe-source-han-serif-cn-fonts adobe-source-code-pro-fonts \
        noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
 
 ## fcitx5
-$ sudo pacman -S fcitx5-im fcitx5-chinese-addons fcitx5-configtool fcitx5-material-color fcitx5-pinyin-zhwiki
+$ sudo pacman -S fcitx5 fcitx5-gtk fcitx5-qt fcitx5-im fcitx5-chinese-addons fcitx5-configtool fcitx5-material-color fcitx5-pinyin-zhwiki fcitx5-rime librime
 
 ## gui-dependent
 $ sudo pacman -S kwindowsystem kguiaddons
 
+## baike Chinese wiki
 $ yay -S fcitx5-pinyin-moegirl
+
+## skin
+$ yay -S fcitx5-skin-adwaita-dark
 ```
 
 Add following lines in `/etc/environment`
@@ -157,6 +171,17 @@ $ sudo docker run --rm --name cloudflared \
     run --token MyToken
 ```
 
+Run docker automatically when start up:
+
+```
+$ sudo docker run -d \
+         --restart unless-stopped \
+         --name cloudflared \
+         --network=host \
+         cloudflare/cloudflared:latest tunnel --no-autoupdate \
+         run --token MyToken
+```
+
 ### 2.3 client
 
 Other setups are also provided on the tunnel.
@@ -164,15 +189,20 @@ Other setups are also provided on the tunnel.
 ### 2.3 Run
 
 ```
-docker run cloudflare/cloudflared:latest tunnel \
-       --no-autoupdate run \
-       --token YouTokenByCloudflare
+$ sudo docker run cloudflare/cloudflared:latest tunnel \
+         --no-autoupdate run \
+         --token YouTokenByCloudflare
 ```
 
 
 ## 3. R
 
 ```
+$ sudo pacman -S R
+
+$ yay -S rstudio-server-bin
+$ sudo systemctl start rstudio-server
+$ sudo systemctl enable rstudio-server
 ```
 
 
@@ -182,3 +212,7 @@ docker run cloudflare/cloudflared:latest tunnel \
 1. [Arch Linux 安装使用教程](https://archlinuxstudio.github.io/ArchLinuxTutoria)
 
 2. [Install yay](https://github.com/Jguer/yay)
+
+3. [Fcitx 最佳配置实践 (附带语言大模型) 2024-12-17](https://manateelazycat.github.io/2024/12/17/fcitx-best-config/)
+
+4. [archlinux 简明指南包含安装、配置、维护等，帮助新手快速上手](https://arch.icekylin.online/)
