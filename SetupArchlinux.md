@@ -15,11 +15,33 @@ after installment, update system as:
 $ sudo pacman -Syyu
 ```
 
+Install yay:
+
+```
+$ sudo pacman -S git base-devel
+$ git clone https://aur.archlinux.org/yay.git
+$ cd yay
+$ makepkg -si
+```
+
+```
+yay
+```
+
+Install paru:
+
+```
+git clone https://aur.archlinux.org/paru.git
+cd paru
+makepkg -si
+```
+
 ### 1.2 Recommend packages
 
 ```
-## basic development, #hardinfo2 is not provided
+## basic development
 $ sudo pacman -S git base-devel
+$ yay -S hardinfo2
 
 ## system monitor
 $ sudo pacman -S htop neofetch
@@ -37,28 +59,9 @@ $ sudo pacman -S s-tui
 $ sudo pacman -S ark p7zip unrar unarchiver lzop lrzip
 
 ## accessoires
-$ sudo pacman -S less git base-devel
+$ sudo pacman -S less
 ```
 
-Install yay:
-
-```
-$ git clone https://aur.archlinux.org/yay.git
-$ cd yay
-$ makepkg -si
-```
-
-```
-yay
-```
-
-Install paru:
-
-```
-git clone https://aur.archlinux.org/paru.git
-cd paru
-makepkg -si
-```
 
 ### 1.3 Chinese input
 
@@ -204,7 +207,6 @@ $ yay -S rstudio-server-bin
 $ sudo systemctl start rstudio-server
 $ sudo systemctl enable rstudio-server
 ```
-
 
 
 ## References
