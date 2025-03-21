@@ -40,7 +40,7 @@ makepkg -si
 
 ```
 ## basic development
-$ sudo pacman -S git base-devel
+$ sudo pacman -S git base-devel gcc-fortran cmake gdal gsl imagemagick jdk-openjdk
 $ yay -S hardinfo2
 
 ## system monitor
@@ -205,7 +205,23 @@ $ sudo systemctl enable rstudio-server
 ```
 
 ```
+## install BioConductor
+if (!require("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install(version = "3.20")
 
+curPkgsPath <- .libPaths()[1]
+curPkgs <- unname(installed.packages()[, "Package"])
+
+prePkgs <- as.character(read.csv("Downloads/tmp1.csv")[, 1])
+
+## install pkgs fron CRAN
+insPkgs <- prePkgs[!(prePkgs %in% curPkgs)]
+
+install.packages(insPkgs)
+BiocManager::install(insPkgs)
+
+install.packages("spDataLarge", repos = "https://geocompr.r-universe.dev")
 ```
 
 
