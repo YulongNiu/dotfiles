@@ -187,14 +187,10 @@ $ sudo docker run -d \
 
 ### 2.3 client
 
-Other setups are also provided on the tunnel.
-
-### 2.3 Run
-
 ```
-$ sudo docker run cloudflare/cloudflared:latest tunnel \
-         --no-autoupdate run \
-         --token YouTokenByCloudflare
+$ ssh -o ProxyCommand="/usr/local/bin/cloudflared access ssh --hostname Subdomain.Domain" Usrname@Subdomain.Domain
+
+$ sftp -o ProxyCommand="/usr/local/bin/cloudflared access ssh --hostname Subdomain.Domain" Usrname@Subdomain.Domain
 ```
 
 
@@ -206,6 +202,10 @@ $ sudo pacman -S R
 $ yay -S rstudio-server-bin
 $ sudo systemctl start rstudio-server
 $ sudo systemctl enable rstudio-server
+```
+
+```
+
 ```
 
 
