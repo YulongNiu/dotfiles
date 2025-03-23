@@ -56,7 +56,7 @@ $ sudo pacman -S vim emacs
 $ sudo pacman -S s-tui
 
 ## zip archive
-$ sudo pacman -S ark p7zip unrar unarchiver lzop lrzip
+$ sudo pacman -S ark p7zip unrar unarchiver lzop lrzip pigz
 
 ## accessoires
 $ sudo pacman -S less exa
