@@ -40,11 +40,11 @@ makepkg -si
 
 ```
 ## basic development
-$ sudo pacman -S git base-devel gcc-fortran cmake gdal gsl imagemagick jdk-openjdk
-$ yay -S hardinfo2
+$ sudo pacman -S git base-devel gcc-fortran cmake gdal gsl imagemagick jdk-openjdk parallel
 
 ## system monitor
 $ sudo pacman -S htop neofetch
+$ yay -S hardinfo2
 
 ## disk management
 $ sudo pacman -S ntfs-3g gparted
@@ -59,7 +59,7 @@ $ sudo pacman -S s-tui
 $ sudo pacman -S ark p7zip unrar unarchiver lzop lrzip
 
 ## accessoires
-$ sudo pacman -S less
+$ sudo pacman -S less exa
 ```
 
 
@@ -222,6 +222,14 @@ install.packages(insPkgs)
 BiocManager::install(insPkgs)
 
 install.packages("spDataLarge", repos = "https://geocompr.r-universe.dev")
+```
+
+## 4. Bioinformatics toolkits
+
+### 4.1 SRA tools
+
+```
+$ yay -S sra-tools
 ```
 
 
