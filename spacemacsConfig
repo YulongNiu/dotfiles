@@ -81,7 +81,6 @@ This function should only modify configuration layer settings."
      treemacs
      helm
      xkcd
-     vundo
      yulong)
 
    ;; List of additional packages that will be installed without being wrapped
@@ -95,7 +94,8 @@ This function should only modify configuration layer settings."
    dotspacemacs-additional-packages '()
 
    ;; A list of packages that cannot be updated.
-   dotspacemacs-frozen-packages '()
+   dotspacemacs-frozen-packages '(vundo
+                                  )
 
    ;; A list of packages that will not be installed and loaded.
    dotspacemacs-excluded-packages '()
@@ -639,6 +639,13 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
+  ;; lsp-mode
+  (setq gc-cons-threshold (* 128 1024 1024))
+  (setq read-process-output-max (* 64 1024 1024))
+
+  ;; vundo
+  (global-set-key (kbd "C-x u") 'vundo)
+
   ;; hs-mode
   (add-hook 'prog-mode-hook 'hs-minor-mode)
   (add-hook 'ess-mode-hook 'hs-minor-mode)
