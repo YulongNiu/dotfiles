@@ -41,7 +41,7 @@ This function should only modify configuration layer settings."
      perl5
      (auto-completion :variables
                       auto-completion-enable-snippets-in-popup t
-                      auto-completion-enable-help-tooltip t
+                      auto-completion-enable-help-tooltip nil
                       auto-completion-private-snippets-directory "~/RESEARCH/YulongSpacemacs/snippets/")
      better-defaults
      semantic
