@@ -36,6 +36,10 @@ cd paru
 makepkg -si
 ```
 
+```
+paru
+```
+
 ### 1.2 Recommend packages
 
 ```
