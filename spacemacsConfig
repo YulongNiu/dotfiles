@@ -647,6 +647,7 @@ before packages are loaded."
   ;; vundo
   (global-set-key (kbd "C-x u") 'vundo)
 
+  ;; magit-gptcommit
   (use-package llm
     :init
     (require 'llm-gemini)
@@ -661,7 +662,6 @@ before packages are loaded."
     :custom
     (llm-warn-on-nonfree nil))
 
-  ;; 配置 magit-gptcommit，确保它在 llm 之后加载
   (use-package magit-gptcommit
     :after magit
     :bind (:map git-commit-mode-map
