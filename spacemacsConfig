@@ -91,11 +91,12 @@ This function should only modify configuration layer settings."
    ;; `dotspacemacs/user-config'. To use a local version of a package, use the
    ;; `:location' property: '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(vundo
+                                      llm
+                                      magit-gptcommit)
 
    ;; A list of packages that cannot be updated.
-   dotspacemacs-frozen-packages '(vundo
-                                  )
+   dotspacemacs-frozen-packages '()
 
    ;; A list of packages that will not be installed and loaded.
    dotspacemacs-excluded-packages '()
@@ -646,6 +647,31 @@ before packages are loaded."
   ;; vundo
   (global-set-key (kbd "C-x u") 'vundo)
 
+  (use-package llm
+    :init
+    (require 'llm-gemini)
+    :config
+    (setopt llm-gemini-provider
+            (make-llm-gemini
+             :key (auth-info-password
+                   (car (auth-source-search
+                         :host "generativelanguage.googleapis.com"
+                         :user "apikey")))
+             :chat-model "gemini-2.0-flash"))
+    :custom
+    (llm-warn-on-nonfree nil))
+
+  ;; 配置 magit-gptcommit，确保它在 llm 之后加载
+  (use-package magit-gptcommit
+    :after magit
+    :bind (:map git-commit-mode-map
+                ("C-c C-g" . magit-gptcommit-commit-accept))
+    :custom
+    (magit-gptcommit-llm-provider llm-gemini-provider)
+    (magit-gptcommit-mode 1)
+    (magit-gptcommit-status-buffer-setup)
+    )
+
   ;; hs-mode
   (add-hook 'prog-mode-hook 'hs-minor-mode)
   (add-hook 'ess-mode-hook 'hs-minor-mode)
@@ -684,3 +710,77 @@ before packages are loaded."
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
+(defun dotspacemacs/emacs-custom-settings ()
+  "Emacs custom settings.
+This is an auto-generated function, do not modify its content directly, use
+Emacs customize menu instead.
+This function is called at the very end of Spacemacs initialization."
+  (custom-set-variables
+   ;; custom-set-variables was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   '(package-selected-packages
+     '(ace-jump-helm-line ace-link aggressive-indent all-the-icons auto-compile
+                          auto-highlight-symbol auto-yasnippet browse-at-remote
+                          centered-cursor-mode clean-aindent-mode code-cells
+                          code-review color-identifiers-mode column-enforce-mode
+                          company-c-headers company-plsense company-web
+                          cpp-auto-include cython-mode dap-mode define-word
+                          devdocs diff-hl diminish dired-quick-sort disable-mouse
+                          disaster docker dockerfile-mode dotenv-mode drag-stuff
+                          dumb-jump eat edit-indirect elisp-def elisp-demos
+                          elisp-slime-nav ellama emmet-mode emr esh-help
+                          eshell-prompt-extras eshell-z ess-R-data-view
+                          eval-sexp-fu evil-anzu evil-args evil-cleverparens
+                          evil-collection evil-easymotion evil-escape
+                          evil-evilified-state evil-exchange evil-goggles
+                          evil-iedit-state evil-indent-plus evil-lion
+                          evil-lisp-state evil-matchit evil-mc evil-nerd-commenter
+                          evil-numbers evil-org evil-surround evil-textobj-line
+                          evil-tutor evil-unimpaired evil-visual-mark-mode
+                          evil-visualstar expand-region eyebrowse fancy-battery
+                          flycheck-elsa flycheck-package flycheck-pos-tip
+                          flyspell-correct-helm geiser-chez geiser-guile
+                          geiser-racket gendoxy ggtags gh-md git-link
+                          git-messenger git-modes git-timemachine
+                          gitignore-templates gnuplot golden-ratio google-c-style
+                          google-translate gptel helm-ag helm-c-yasnippet
+                          helm-comint helm-company helm-css-scss helm-descbinds
+                          helm-git-grep helm-gtags helm-ls-git helm-lsp helm-make
+                          helm-mode-manager helm-org helm-org-rifle
+                          helm-projectile helm-purpose helm-pydoc helm-swoop
+                          helm-themes helm-xref hide-comnt highlight-indentation
+                          highlight-numbers highlight-parentheses hl-todo
+                          holy-mode hungry-delete hybrid-mode ibuffer-projectile
+                          impatient-mode indent-guide info+ inspector js-doc
+                          js2-refactor json-mode json-navigator json-reformat
+                          link-hint live-py-mode livid-mode lorem-ipsum
+                          lsp-origami lsp-ui macrostep magit-gptcommit
+                          markdown-toc monokai-theme multi-line multi-term
+                          multi-vterm mwim nameless nerd-icons nodejs-repl
+                          npm-mode nyan-mode open-junk-file org-cliplink
+                          org-contrib org-download org-mime org-pomodoro
+                          org-present org-projectile org-rich-yank org-superstar
+                          orgit-forge overseer paradox password-generator pcre2el
+                          pip-requirements pipenv pippel poetry popwin prettier-js
+                          pug-mode py-isort pydoc pyenv-mode pylookup pytest
+                          quickrun rainbow-delimiters rainbow-identifiers
+                          rainbow-mode restart-emacs sass-mode scss-mode shell-pop
+                          slim-mode smeargle solarized-theme space-doc spaceline
+                          spacemacs-purpose-popwin spacemacs-whitespace-cleanup
+                          sphinx-doc srefactor string-edit-at-point
+                          string-inflection symbol-overlay symon tagedit
+                          term-cursor terminal-here toc-org treemacs-evil
+                          treemacs-icons-dired treemacs-magit treemacs-persp
+                          treemacs-projectile undo-fu undo-fu-session unfill
+                          vi-tilde-fringe volatile-highlights vundo web-beautify
+                          web-mode wgrep winum writeroom-mode ws-butler xkcd
+                          yaml-mode yasnippet-snippets zenburn-theme)))
+  (custom-set-faces
+   ;; custom-set-faces was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   )
+  )
