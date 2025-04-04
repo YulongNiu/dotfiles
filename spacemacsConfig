@@ -665,12 +665,14 @@ before packages are loaded."
   (use-package magit-gptcommit
     :after magit
     :bind (:map git-commit-mode-map
-                ("C-c C-g" . magit-gptcommit-commit-accept))
+                ("C-c C-c" . magit-gptcommit-commit-accept))
     :custom
     (magit-gptcommit-llm-provider llm-gemini-provider)
     (magit-gptcommit-mode 1)
     (magit-gptcommit-status-buffer-setup)
     )
+
+  (setq python-shell-interpreter "/Users/yulong/Tools/miniconda/envs/SCscrublet/bin/python")
 
   ;; hs-mode
   (add-hook 'prog-mode-hook 'hs-minor-mode)
