@@ -120,35 +120,12 @@ alias c='clear'
 alias cl='c; l'
 alias nproc="sysctl -n hw.logicalcpu"
 alias sshcf="ssh -o ProxyCommand=\"/usr/local/bin/cloudflared access ssh --hostname idv7920.bio-nutshell.org\""
-alias sftpcf="ssh -o ProxyCommand=\"/usr/local/bin/cloudflared access ssh --hostname idv7920.bio-nutshell.org\""
+alias sftpcf="sftp -o ProxyCommand=\"/usr/local/bin/cloudflared access ssh --hostname idv7920.bio-nutshell.org\""
+alias weather="curl v2.wttr.in/Paris"
 
 source ~/Tools/powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/yulong/Tools/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/yulong/Tools/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/yulong/Tools/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/yulong/Tools/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-
-# pyenv
-source /Users/yulong/.config/broot/launcher/bash/br
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-if command -v pyenv 1>/dev/null 2>&1; then
- eval "$(pyenv init -)"
-fi
 
 # command-not-found
 HB_CNF_HANDLER="$(brew --repository)/Library/Taps/homebrew/homebrew-command-not-found/handler.sh"
@@ -186,4 +163,22 @@ export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
 
 ## Visual studio
 export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
+
+## openblas
+export PKG_CONFIG_PATH="/usr/local/opt/openblas/lib/pkgconfig:$PKG_CONFIG_PATH"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/yulong/Tools/miniconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/yulong/Tools/miniconda/etc/profile.d/conda.sh" ]; then
+        . "/Users/yulong/Tools/miniconda/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/yulong/Tools/miniconda/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
 
