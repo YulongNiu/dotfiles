@@ -123,7 +123,7 @@ alias sshcf="ssh -o ProxyCommand=\"/usr/local/bin/cloudflared access ssh --hostn
 alias sftpcf="sftp -o ProxyCommand=\"/usr/local/bin/cloudflared access ssh --hostname idv7920.bio-nutshell.org\""
 alias weather="curl v2.wttr.in/Paris"
 
-source ~/Tools/powerlevel10k/powerlevel10k.zsh-theme
+source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
