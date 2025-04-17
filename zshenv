@@ -32,7 +32,7 @@ ZSH_THEME="robbyrussell"
 
 # Uncomment one of the following lines to change the auto-update behavior
 # zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
+zstyle ':omz:update' mode auto      # update automatically without asking
 # zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
@@ -118,6 +118,7 @@ alias ltree='lsd --tree'
 alias ltree2='lsd --tree --level=2'
 alias c='clear'
 alias cl='c; l'
+alias d='du -h --max-depth=1'
 alias nproc="sysctl -n hw.logicalcpu"
 alias sshcf="ssh -o ProxyCommand=\"/usr/local/bin/cloudflared access ssh --hostname idv7920.bio-nutshell.org\""
 alias sftpcf="sftp -o ProxyCommand=\"/usr/local/bin/cloudflared access ssh --hostname idv7920.bio-nutshell.org\""
