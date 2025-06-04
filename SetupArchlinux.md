@@ -111,15 +111,18 @@ $ sudo systemctl start bluetooth.service
 ### 1.4 Nvidia driver
 
 ```
-$ sudo apt-get install nvidia-detect
-```
-
-```
-## check nvidia driver format
-$ nvidia-detect
-
 ## check nvidia driver status
 $ nvidia-smi
+```
+
+```
+## install NVIDIA driver, reboot after installment
+$ sudo pacman -S nvidia nvidia-utils
+```
+
+```
+## NIVIDA top
+$ nvidia-detect
 ```
 
 ### 1.5 Spacemacs
