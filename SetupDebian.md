@@ -33,7 +33,8 @@ $ sudo apt-get upgrade
 
 ```
 ## basic development
-$ sudo apt-get install git build-essential gfortran cmake gdal-bin libgdal-dev libgsl-dev imagemagick default-jdk parallel gpg gdebi-core
+$ sudo apt-get install git build-essential gfortran cmake gdal-bin libgdal-dev libgsl-dev imagemagick default-jdk parallel gpg gdebi-core libpoppler-cpp-dev libfontconfig1-dev libcairo2-dev libharfbuzz-dev libfribidi-dev libmagick++-dev
+
 
 ## system monitor
 $ sudo apt-get install htop btop neofetch hardinfo
@@ -154,14 +155,21 @@ curPkgsPath <- .libPaths()[1]
 curPkgs <- unname(installed.packages()[, "Package"])
 
 prePkgs <- as.character(read.csv("Downloads/Rpkgs.csv")[, 1])
-
-## install pkgs fron CRAN
 insPkgs <- prePkgs[!(prePkgs %in% curPkgs)]
 
+## install pkgs
 install.packages(insPkgs)
 BiocManager::install(insPkgs)
 
+## install manually
 install.packages("spDataLarge", repos = "https://geocompr.r-universe.dev")
+BiocManager::install("plger/scDblFinder")
+remotes::install_github('chris-mcginnis-ucsf/DoubletFinder', force = TRUE)
+remotes::install_github("zqfang/MuDataSeurat", force = TRUE)
+devtools::install_github('satijalab/seurat-data')
+devtools::install_github("immunogenomics/presto")
+remotes::install_github('satijalab/azimuth', ref = 'master')
+remotes::install_github('satijalab/seurat-wrappers')
 ```
 
 
@@ -202,9 +210,11 @@ $ udisksctl power-off -b /dev/SDE
 ## list usb stake
 $ lsblk
 
+$ sudo mkfs.exfat -n MYUSB /dev/SDE
 
+$ sudo umount /dev/sde
+$ sudo udisksctl power-off -b /dev/SDE
 ```
-
 
 ## 5. Mics
 
