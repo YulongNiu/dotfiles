@@ -185,7 +185,6 @@ $ sudo gdebi rstudio-server-2025.05.0-496-amd64.deb
 $ sudo systemctl enable rstudio-server
 ```
 
-
 ## 4. Load disks
 
 ### 4.1
@@ -219,9 +218,12 @@ $ sudo udisksctl power-off -b /dev/SDE
 ## 5. Mics
 
 ```
+## list enabled programs
 $ systemctl list-unit-files --type=service | grep enabled
-```
 
+## real memory usage
+$ ps aux --sort=-%mem | awk 'NR>1 {sum += $6} END {printf "Total RSS: %.2f MB\n", sum/1024}'
+```
 
 
 ## References
