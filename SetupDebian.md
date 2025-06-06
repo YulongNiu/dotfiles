@@ -33,13 +33,13 @@ $ sudo apt-get upgrade
 
 ```
 ## basic development
-$ sudo apt-get install git build-essential gfortran cmake gdal-bin libgdal-dev libgsl-dev imagemagick default-jdk parallel
+$ sudo apt-get install git build-essential gfortran cmake gdal-bin libgdal-dev libgsl-dev imagemagick default-jdk parallel gpg
 
 ## system monitor
 $ sudo apt-get install htop btop neofetch hardinfo
 
 ## disk management
-$ sudo apt-get install ntfs-3g gparted
+$ sudo apt-get install ntfs-3g gparted exfatprogs udisks2
 
 ## text editor
 $ sudo apt-get install vim emacs
@@ -54,7 +54,16 @@ $ sudo apt-get install ark p7zip-full unrar unar lzop lrzip pigz
 $ sudo apt-get install less exa
 ```
 
-### 1.2 Nvidia driver
+```
+$ sudo mkdir -p /etc/apt/keyrings
+$ wget -qO- https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | sudo gpg --dearmor -o /etc/apt/keyrings/gierens.gpg
+$ echo "deb [signed-by=/etc/apt/keyrings/gierens.gpg] http://deb.gierens.de stable main" | sudo tee /etc/apt/sources.list.d/gierens.list
+$ sudo chmod 644 /etc/apt/keyrings/gierens.gpg /etc/apt/sources.list.d/gierens.list
+$ sudo apt update
+$ sudo apt install -y eza
+```
+
+### 1.4 Nvidia driver
 
 ```
 ## reboot after installation
@@ -69,11 +78,24 @@ $ nvidia-detect
 $ nvidia-smi
 ```
 
+### 1.5 ssh
+
+```
+$ sudo pacman -S openssh
+
+$ sudo systemctl enable --now sshd.service
+$ sudo systemctl start sshd.service
+```
+
 ## 2. Cloudflare tunnel
 
 ### 2.1 Install Docker
 
 Install [Docker in Debian](https://docs.docker.com/engine/install/debian/#install-using-the-repository).
+
+```
+$ sudo systemctl enable docker
+```
 
 ### 2.2 Setup Cloudflare
 Setup on Cloudflare left pannel,
