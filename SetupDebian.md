@@ -33,7 +33,7 @@ $ sudo apt-get upgrade
 
 ```
 ## basic development
-$ sudo apt-get install git build-essential gfortran cmake gdal-bin libgdal-dev libgsl-dev imagemagick default-jdk parallel gpg
+$ sudo apt-get install git build-essential gfortran cmake gdal-bin libgdal-dev libgsl-dev imagemagick default-jdk parallel gpg gdebi-core
 
 ## system monitor
 $ sudo apt-get install htop btop neofetch hardinfo
@@ -139,14 +139,78 @@ $ ssh-copy-id -o ProxyCommand="/usr/local/bin/cloudflared access ssh --hostname 
 
 ## 3. R
 
+### 3.1 install R
 ```
-## install R
-sudo apt install r-base r-base-dev
+## install latest R from https://community.hetzner.com/tutorials/how-to-install-r-on-debian
+```
+
+```
+## install R/Bioconductor packages
+if (!require("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install(version = "3.21")
+
+curPkgsPath <- .libPaths()[1]
+curPkgs <- unname(installed.packages()[, "Package"])
+
+prePkgs <- as.character(read.csv("Downloads/Rpkgs.csv")[, 1])
+
+## install pkgs fron CRAN
+insPkgs <- prePkgs[!(prePkgs %in% curPkgs)]
+
+install.packages(insPkgs)
+BiocManager::install(insPkgs)
+
+install.packages("spDataLarge", repos = "https://geocompr.r-universe.dev")
 ```
 
 
+### 3.2 install R studio
 
-https://posit.co/download/rstudio-server/
+```
+## download libssl1.1 from https://snapshot.debian.org/package/openssl/1.1.1w-0%2Bdeb11u3/#libssl1.1_1.1.1w-0:2b:deb11u3
+$ sudo dpkg -i libssl1.1_1.1.1w-0+deb11u3_amd64.deb
+
+## download rstudio server from https://posit.co/download/rstudio-server/
+$ sudo gdebi rstudio-server-2025.05.0-496-amd64.deb
+
+$ sudo systemctl enable rstudio-server
+```
+
+
+## 4. Load disks
+
+### 4.1
+
+### 4.2 Mount external disks
+
+```
+## list external disk
+$ lsblk
+
+## mount
+$ udisksctl mount -b /dev/SDE1
+
+## unmount
+$ udisksctl unmount -b /dev/SDE1
+$ udisksctl power-off -b /dev/SDE
+```
+
+### 4.3 Format USB stake
+
+```
+## list usb stake
+$ lsblk
+
+
+```
+
+
+## 5. Mics
+
+```
+$ systemctl list-unit-files --type=service | grep enabled
+```
 
 
 
@@ -155,3 +219,7 @@ https://posit.co/download/rstudio-server/
 1. [Debian source list](https://wiki.debian.org/SourcesList)
 
 2. [Debian install Docker](https://docs.docker.com/engine/install/debian/#install-using-the-repository)
+
+3. [libssh1.1](https://snapshot.debian.org/package/openssl/1.1.1w-0%2Bdeb11u3/#libssl1.1_1.1.1w-0:2b:deb11u3)
+
+4. [Debian install latest R](https://community.hetzner.com/tutorials/how-to-install-r-on-debian)
