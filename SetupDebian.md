@@ -37,7 +37,7 @@ $ sudo apt-get install git build-essential gfortran cmake gdal-bin libgdal-dev l
 
 
 ## system monitor
-$ sudo apt-get install htop btop neofetch hardinfo lm-sensors fancontrol
+$ sudo apt-get install htop btop neofetch hardinfo lm-sensors fancontrol smartmontools
 
 ## sensors
 $ sudo sensors-detect
@@ -225,6 +225,9 @@ $ systemctl list-unit-files --type=service | grep enabled
 
 ## real memory usage
 $ ps aux --sort=-%mem | awk 'NR>1 {sum += $6} END {printf "Total RSS: %.2f MB\n", sum/1024}'
+
+## check disk
+$ sudo smartctl -a /dev/nvme2n1
 ```
 
 
