@@ -37,7 +37,11 @@ $ sudo apt-get install git build-essential gfortran cmake gdal-bin libgdal-dev l
 
 
 ## system monitor
-$ sudo apt-get install htop btop neofetch hardinfo
+$ sudo apt-get install htop btop neofetch hardinfo lm-sensors fancontrol
+
+## sensors
+$ sudo sensors-detect
+$ sensors
 
 ## disk management
 $ sudo apt-get install ntfs-3g gparted exfatprogs udisks2
