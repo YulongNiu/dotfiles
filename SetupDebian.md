@@ -217,7 +217,15 @@ $ sudo umount /dev/sde
 $ sudo udisksctl power-off -b /dev/SDE
 ```
 
-## 5. Mics
+## 5. Bioinformatics
+
+### 5.1 Install Miniconductor
+
+Follow [Miniconda install](https://www.anaconda.com/docs/getting-started/miniconda/system-requirements).
+
+
+
+## 6. Mics
 
 ```
 ## list enabled programs
@@ -240,3 +248,5 @@ $ sudo smartctl -a /dev/nvme2n1
 3. [libssh1.1](https://snapshot.debian.org/package/openssl/1.1.1w-0%2Bdeb11u3/#libssl1.1_1.1.1w-0:2b:deb11u3)
 
 4. [Debian install latest R](https://community.hetzner.com/tutorials/how-to-install-r-on-debian)
+
+5. [Miniconda install](https://www.anaconda.com/docs/getting-started/miniconda/system-requirements)
