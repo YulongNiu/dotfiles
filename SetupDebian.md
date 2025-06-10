@@ -232,7 +232,7 @@ Follow [Miniconda install](https://www.anaconda.com/docs/getting-started/minicon
 $ systemctl list-unit-files --type=service | grep enabled
 
 ## real memory usage
-$ ps aux --sort=-%mem | awk 'NR>1 {sum += $6} END {printf "Total RSS: %.2f MB\n", sum/1024}'
+$ ps aux --sort=-%mem | awk 'NR>1 {sum += $6} END {printf "Total RSS: %.2f GB\n", sum/1024/1024}'
 
 ## check disk
 $ sudo smartctl -a /dev/nvme2n1
