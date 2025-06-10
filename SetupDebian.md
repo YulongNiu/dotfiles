@@ -223,6 +223,13 @@ $ sudo udisksctl power-off -b /dev/SDE
 
 Follow [Miniconda install](https://www.anaconda.com/docs/getting-started/miniconda/system-requirements).
 
+### 5.2 Single cell analysis
+
+```
+conda create -n SCscrublet python=3.9 scrublet
+pip3 install igraph
+pip3 install scanpy
+```
 
 
 ## 6. Mics
