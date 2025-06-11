@@ -33,7 +33,7 @@ $ sudo apt-get upgrade
 
 ```
 ## basic development
-$ sudo apt-get install git build-essential gfortran cmake gdal-bin libgdal-dev libgsl-dev imagemagick default-jdk parallel gpg gdebi-core libpoppler-cpp-dev libfontconfig1-dev libcairo2-dev libharfbuzz-dev libfribidi-dev libmagick++-dev
+$ sudo apt-get install git build-essential gfortran cmake gdal-bin libgdal-dev libgsl-dev imagemagick default-jdk parallel gpg gdebi-core libpoppler-cpp-dev libfontconfig1-dev libcairo2-dev libharfbuzz-dev libfribidi-dev libmagick++-dev ninja-build lowdown
 
 
 ## system monitor
@@ -226,10 +226,17 @@ Follow [Miniconda install](https://www.anaconda.com/docs/getting-started/minicon
 ### 5.2 Single cell analysis
 
 ```
-conda create -n SCscrublet python=3.9 scrublet
-pip3 install igraph
-pip3 install scanpy
+## scrublet for doublet detection
+$ conda create -n SCscrublet python=3.9 scrublet
+$ pip3 install igraph
+$ pip3 install scanpy
+
+## SCVI for integration
+$ conda create -n SCscvi python=3.12
+$ pip install -U scvi-tools[cuda]
+$ pip install -U scvi-tools[optional]
 ```
+
 
 
 ## 6. Mics
