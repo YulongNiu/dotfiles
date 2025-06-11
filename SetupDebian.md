@@ -33,7 +33,7 @@ $ sudo apt-get upgrade
 
 ```
 ## basic development
-$ sudo apt-get install git build-essential gfortran cmake gdal-bin libgdal-dev libgsl-dev imagemagick default-jdk parallel gpg gdebi-core libpoppler-cpp-dev libfontconfig1-dev libcairo2-dev libharfbuzz-dev libfribidi-dev libmagick++-dev ninja-build lowdown
+$ sudo apt-get install git build-essential gfortran cmake gdal-bin libgdal-dev libgsl-dev imagemagick default-jdk parallel gpg gdebi-core libpoppler-cpp-dev libfontconfig1-dev libcairo2-dev libharfbuzz-dev libfribidi-dev libmagick++-dev ninja-build lowdown poppler-utils
 
 
 ## system monitor
@@ -235,6 +235,10 @@ $ pip3 install scanpy
 $ conda create -n SCscvi python=3.12
 $ pip install -U scvi-tools[cuda]
 $ pip install -U scvi-tools[optional]
+$ pip install ipython
+$ pip install scanpy
+$ pip install scikit-image
+$ pip install scikit-misc
 ```
 
 
