@@ -72,7 +72,7 @@ $ sudo apt-get install -y eza
 
 ```
 ## reboot after installation
-$ sudo apt-get install nvidia-detect nvidia-smi
+$ sudo apt-get install nvidia-detect nvidia-smi nvidia-cuda-toolkit nvtop
 ```
 
 ```
