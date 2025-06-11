@@ -233,12 +233,13 @@ $ pip3 install scanpy
 
 ## SCVI for integration
 $ conda create -n SCscvi python=3.12
-$ pip install -U scvi-tools[cuda]
-$ pip install -U scvi-tools[optional]
-$ pip install ipython
-$ pip install scanpy
-$ pip install scikit-image
-$ pip install scikit-misc
+$ pip3 install -U scvi-tools[cuda]
+$ pip3 install -U scvi-tools[optional]
+$ pip3 install ipython
+$ pip3 install scanpy
+$ pip3 install scikit-image
+$ pip3 install scikit-misc
+$ pip3 install igraph
 ```
 
 
