@@ -235,16 +235,24 @@ $ pip3 install scanpy
 $ conda create -n SCscvi python=3.12
 $ pip3 install -U scvi-tools[cuda]
 $ pip3 install -U scvi-tools[optional]
-$ pip3 install ipython
-$ pip3 install scanpy
-$ pip3 install scikit-image
-$ pip3 install scikit-misc
-$ pip3 install igraph
+$ pip3 install ipython scanpy scikit-image scikit-misc igraph adjustText
 ```
 
+## 6. Jupyter nootbook
 
+Install JupterLab
 
-## 6. Mics
+```
+$ conda create -n Jupyter python=3.13 -y
+$ conda activate Jupyter
+$ conda install jupyterlab ipykernel nootbook -y
+
+## set password
+$ python -c "from jupyter_server.auth import passwd; print(passwd())"
+$ emacs ~/.jupyter/jupyter_lab_config.py
+```
+
+## 7. Mics
 
 ```
 ## list enabled programs
