@@ -99,7 +99,20 @@ $ sudo systemctl start sshd.service
 Install [Docker in Debian](https://docs.docker.com/engine/install/debian/#install-using-the-repository).
 
 ```
+## run docker when start up
 $ sudo systemctl enable docker
+
+## add docker to users group
+$ sudo usermod -aG docker $USER
+$ newgrp docker
+```
+
+```
+## list docker images
+$ docker images
+
+## list running docker images
+$ docker ps
 ```
 
 ### 2.2 Setup Cloudflare
