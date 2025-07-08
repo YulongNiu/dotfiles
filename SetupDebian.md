@@ -37,7 +37,7 @@ $ sudo apt-get install git build-essential gfortran cmake gdal-bin libgdal-dev l
 
 
 ## system monitor
-$ sudo apt-get install htop btop neofetch hardinfo lm-sensors fancontrol smartmontools
+$ sudo apt-get install htop btop neofetch hardinfo lm-sensors fancontrol smartmontools nload
 
 ## sensors
 $ sudo sensors-detect
