@@ -56,7 +56,7 @@ $ sudo apt-get install s-tui
 $ sudo apt-get install ark p7zip-full unrar unar lzop lrzip pigz
 
 ## accessoires
-$ sudo apt-get install less exa
+$ sudo apt-get install less
 ```
 
 ```
