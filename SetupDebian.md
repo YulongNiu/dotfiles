@@ -77,8 +77,6 @@ $ nvidia-smi
 ### 1.5 ssh
 
 ```
-$ sudo pacman -S openssh
-
 $ sudo systemctl enable --now sshd.service
 $ sudo systemctl start sshd.service
 ```
