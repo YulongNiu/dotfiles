@@ -1,0 +1,49 @@
+## ~/.R/Makevars
+## Safe defaults for macOS + CRAN packages
+## Use Apple clang for C/C++ and Homebrew gfortran for Fortran
+## Avoid linking against Homebrew LLVM to prevent libc++ ABI issues
+
+# --- Compilers (C/C++) ---
+CC=/usr/bin/clang
+CXX=/usr/bin/clang++
+CXX11=/usr/bin/clang++
+CXX14=/usr/bin/clang++
+CXX17=/usr/bin/clang++
+CXX20=/usr/bin/clang++
+
+# --- Fortran (enable) ---
+# Intel Homebrew default (most /usr/local setups)
+FC=/usr/local/bin/gfortran-15
+F77=$(FC)
+FLIBS=-L/usr/local/lib/gcc/15 -lgfortran -lquadmath -lm
+
+# If you are on Apple Silicon (Homebrew in /opt/homebrew), use these instead:
+# FC=/opt/homebrew/bin/gfortran-15
+# F77=$(FC)
+# FLIBS=-L/opt/homebrew/lib/gcc/15 -lgfortran -lquadmath -lm
+
+# If your Homebrew GCC version differs, adjust the "15" in paths above accordingly.
+
+# --- SDK (auto-detect) ---
+SDK:=$(shell xcrun --show-sdk-path)
+
+# --- Optimization & warnings (lean & safe) ---
+CFLAGS=-O3 -Wall -pedantic -mtune=native -pipe
+CXXFLAGS=-O3 -Wall -pedantic -mtune=native -pipe
+FFLAGS=-O3 -mtune=native -pipe
+FCFLAGS=$(FFLAGS)
+
+# Point only to Apple SDK; do NOT add Homebrew LLVM include dirs
+CPPFLAGS=-isysroot $(SDK)
+
+# Do NOT add /usr/local/opt/llvm or rpath here
+# LDFLAGS=
+
+# --- OpenMP ---
+# Not enabled by default. If a specific package needs OpenMP, prefer setting it
+# temporarily just for that installation rather than enabling globally.
+# SHLIB_OPENMP_CFLAGS=
+# SHLIB_OPENMP_CXXFLAGS=
+# SHLIB_OPENMP_FCFLAGS=
+# SHLIB_OPENMP_FFLAGS=
+
