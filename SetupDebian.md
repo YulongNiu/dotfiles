@@ -215,7 +215,7 @@ $ lsblk
 
 $ sudo mkfs.exfat -n MYUSB /dev/SDE
 
-$ sudo umount /dev/sde
+$ sudo umount /dev/SDE
 $ sudo udisksctl power-off -b /dev/SDE
 ```
 
