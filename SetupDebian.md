@@ -250,8 +250,11 @@ $ conda create -n SCscvi_umapGPU -y \
     pytorch-lightning=2.3.* \
     torchmetrics=1.4.* \
     scvi-tools=1.2.* \
+    pdf2image \
+    scikit-misc \
     umap-learn \
     numpy \
+    scanpy \
     scikit-learn
 
 $ conda activate SCscvi_umapGPU
