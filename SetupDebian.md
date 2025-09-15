@@ -241,36 +241,33 @@ $ pip3 install ipython scanpy scikit-image scikit-misc igraph adjustText
 
 
 ## SCVI with GPU umap
-$ conda create --name SCscvi-umap --clone SCscvi
-$ conda activate SCscvi-umap
-$ pip list --format=freeze | egrep '^nvidia-|^cuda-|^pynvjitlink|^nvtx|^numba-cuda' | cut -d= -f1 | xargs -r pip uninstall -y
-$ pip install \
-    nvidia-cuda-cupti-cu12==12.6.80 \
-    nvidia-cudnn-cu12==9.5.1.17 \
-    nvidia-cufile-cu12==1.11.1.6 \
-    nvidia-cusparselt-cu12==0.6.3 \
-    nvidia-nvtx-cu12==12.6.77 \
-    nvidia-cublas-cu12==12.6.4.1 \
-    nvidia-cuda-nvrtc-cu12==12.6.77 \
-    nvidia-cuda-runtime-cu12==12.6.77 \
-    nvidia-cufft-cu12==11.3.0.4 \
-    nvidia-curand-cu12==10.3.7.77 \
-    nvidia-cusolver-cu12==11.7.1.2 \
-    nvidia-cusparse-cu12==12.5.4.2 \
-    nvidia-nccl-cu12==2.26.2 \
-    nvidia-nvjitlink-cu12==12.6.85
-$ pip install -U cupy-cuda12x
-$ pip install -U cuml-cu12 --extra-index-url https://pypi.nvidia.com
-$ unset LD_LIBRARY_PATH
+$ conda create -n SCscvi_umapGPU -y \
+    -c rapidsai -c nvidia -c conda-forge -c pytorch \
+    python=3.10 \
+    cuml=25.08 \
+    cupy \
+    pytorch=2.4.* pytorch-cuda=12.1 torchvision torchaudio \
+    pytorch-lightning=2.3.* \
+    torchmetrics=1.4.* \
+    scvi-tools=1.2.* \
+    umap-learn \
+    numpy \
+    scikit-learn
+
+$ conda activate SCscvi_umapGPU
 
 ## test
-python - << 'PY'
-import torch, cupy, cuml
-print("Torch:", torch.__version__)
-print("CuPy :", cupy.__version__)
-print("cuML :", cuml.__version__)
+python - <<'PY'
+import torch, scvi
 from cuml.manifold import UMAP as cuUMAP
-print("Imported cuML UMAP OK")
+import cupy as cp
+
+print("Torch:", torch.__version__, "CUDA available:", torch.cuda.is_available())
+print("scvi-tools:", scvi.__version__)
+
+X = cp.random.rand(500, 20, dtype=cp.float32)
+emb = cuUMAP().fit_transform(X)
+print("cuML UMAP embedding:", emb.shape)
 PY
 ```
 
