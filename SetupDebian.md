@@ -254,6 +254,7 @@ $ conda create -n SCscvi_umapGPU -y \
     scikit-misc \
     umap-learn \
     numpy \
+    python-igraph \
     scanpy \
     scikit-learn
 
