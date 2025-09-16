@@ -236,9 +236,7 @@ $ pip3 install scanpy
 ## SCVI for integration
 $ conda create -n SCscvi python=3.12
 $ pip3 install -U scvi-tools[cuda]
-$ pip3 install -U scvi-tools[optional]
 $ pip3 install ipython scanpy scikit-image scikit-misc igraph adjustText
-
 
 ## SCVI with GPU umap
 $ conda create -n SCscvi_umapGPU -y \
