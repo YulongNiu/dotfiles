@@ -271,6 +271,18 @@ X = cp.random.rand(500, 20, dtype=cp.float32)
 emb = cuUMAP().fit_transform(X)
 print("cuML UMAP embedding:", emb.shape)
 PY
+
+## SCVI with rapids_singlecell
+$ conda create -n SCscvi_rapidssc -y \
+     -c rapidsai -c nvidia -c conda-forge -c bioconda \
+     python=3.13 rapids=25.06 cuda-version=12.8 \
+     cudnn cutensor cusparselt jupyterlab pip \
+     pdf2image python-igraph scanpy scikit-misc \
+     gdown
+
+$ conda activate SCscvi_rapidssc
+$ pip install -U scvi-tools[cuda]
+$ pip install wget rapids-singlecell
 ```
 
 ## 6. Jupyter nootbook
