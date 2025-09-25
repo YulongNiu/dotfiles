@@ -120,8 +120,14 @@ alias c='clear'
 alias cl='c; l'
 alias d='du -h --max-depth=1'
 alias nproc="sysctl -n hw.logicalcpu"
-alias sshcf="ssh -o ProxyCommand=\"/usr/local/bin/cloudflared access ssh --hostname idv7920.bio-nutshell.org\""
-alias sftpcf="sftp -o ProxyCommand=\"/usr/local/bin/cloudflared access ssh --hostname idv7920.bio-nutshell.org\""
+alias sshcf7920="ssh -o ProxyCommand=\"/usr/local/bin/cloudflared access ssh --hostname idv7920.bio-nutshell.org\" niuyl@idv7920.bio-nutshell.org"
+alias sftpcf7920="sftp -o ProxyCommand=\"/usr/local/bin/cloudflared access ssh --hostname idv7920.bio-nutshell.org\" niuyl@idv7920.bio-nutshell.org"
+alias sshcf3640="ssh -o ProxyCommand=\"/usr/local/bin/cloudflared access ssh --hostname idv3640.bio-nutshell.org\" niuyl@idv3640.bio-nutshell.org"
+alias sftpcf3640="sftp -o ProxyCommand=\"/usr/local/bin/cloudflared access ssh --hostname idv3640.bio-nutshell.org\" niuyl@idv3640.bio-nutshell.org"
+alias s7=sshcf7920
+alias t7=sftpcf7920
+alias s3=sshcf3640
+alias t3=sftpcf3640
 alias weather="curl v2.wttr.in/Paris"
 
 source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme
@@ -129,9 +135,9 @@ source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # command-not-found
-HB_CNF_HANDLER="$(brew --repository)/Library/Taps/homebrew/homebrew-command-not-found/handler.sh"
-if [ -f "$HB_CNF_HANDLER" ]; then
-    source "$HB_CNF_HANDLER";
+HOMEBREW_COMMAND_NOT_FOUND_HANDLER="$(brew --repository)/Library/Homebrew/command-not-found/handler.sh"
+if [ -f "$HOMEBREW_COMMAND_NOT_FOUND_HANDLER" ]; then
+    source "$HOMEBREW_COMMAND_NOT_FOUND_HANDLER";
 fi
 
 # Following line was automatically added by arttime installer
