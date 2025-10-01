@@ -111,14 +111,14 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # alias proxy='export all_proxy=socks5://127.0.0.1:1080'
-alias proxy='export http_proxy=http://127.0.0.1:7890; export https_proxy=http://127.0.0.1:7890; export ALL_PROXY=socks5://127.0.0.1:1080'
-alias unproxy='unset all_proxy'
-alias l='eza -lh'
-alias ltree='eza --tree'
-alias ltree2='eza --tree --level=2'
-alias c='clear'
-alias cl='c; l'
-alias d='du -h --max-depth=1'
+alias proxy="export http_proxy=http://127.0.0.1:7890; export https_proxy=http://127.0.0.1:7890; export ALL_PROXY=socks5://127.0.0.1:1080"
+alias unproxy="unset all_proxy"
+alias l="eza -lh"
+alias ltree="eza --tree"
+alias ltree2="eza --tree --level=2"
+alias c="clear"
+alias cl="c; l"
+alias d="du -h --max-depth=1"
 alias nproc="sysctl -n hw.logicalcpu"
 alias sshcf7920="ssh -o ProxyCommand=\"/usr/local/bin/cloudflared access ssh --hostname idv7920.bio-nutshell.org\" niuyl@idv7920.bio-nutshell.org"
 alias sftpcf7920="sftp -o ProxyCommand=\"/usr/local/bin/cloudflared access ssh --hostname idv7920.bio-nutshell.org\" niuyl@idv7920.bio-nutshell.org"
@@ -128,6 +128,9 @@ alias s7=sshcf7920
 alias t7=sftpcf7920
 alias s3=sshcf3640
 alias t3=sftpcf3640
+alias rclone="/Users/yulong/Tools/rclone-v1.71.1-osx-amd64/rclone"
+alias m7="rclone mount idv7920:/ ~/IDV7920 --vfs-cache-mode=minimal --vfs-cache-max-age=24h --vfs-cache-max-size=10G --dir-cache-time=24h --poll-interval=1m --attr-timeout=10s --vfs-read-chunk-size=8M --vfs-read-chunk-size-limit=64M --buffer-size=8M --umask=022 --daemon --daemon-timeout=30s --volname DebianServer"
+alias um7="umount ~/IDV7920"
 alias weather="curl v2.wttr.in/Paris"
 
 source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme
