@@ -273,9 +273,9 @@ print("cuML UMAP embedding:", emb.shape)
 PY
 
 ## SCVI with rapids_singlecell
-$ conda create -n SCscvi_rapidssc -y \
+$ conda create -n SCscvi_rapidssc2 -y \
      -c rapidsai -c nvidia -c conda-forge -c bioconda \
-     python=3.13 rapids=25.06 cuda-version=12.8 \
+     python=3.13 rapids=25.10 'cuda-version>=12.0,<=12.9' \
      cudnn cutensor cusparselt jupyterlab pip \
      pdf2image python-igraph scanpy scikit-misc \
      gdown
