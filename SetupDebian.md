@@ -44,7 +44,7 @@ $ sudo sensors-detect
 $ sensors
 
 ## disk management
-$ sudo apt-get install ntfs-3g gparted exfatprogs udisks2
+$ sudo apt-get install ntfs-3g gparted exfatprogs udisks2 xfsprogs
 
 ## text editor
 $ sudo apt-get install vim emacs
@@ -273,7 +273,7 @@ print("cuML UMAP embedding:", emb.shape)
 PY
 
 ## SCVI with rapids_singlecell
-$ conda create -n SCscvi_rapidssc2 -y \
+$ conda create -n SCscvi_rapidssc -y \
      -c rapidsai -c nvidia -c conda-forge -c bioconda \
      python=3.13 rapids=25.10 cuda-version=12.8 \
      cudnn cutensor cusparselt jupyterlab pip \
