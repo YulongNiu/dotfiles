@@ -278,7 +278,7 @@ $ conda create -n SCscvi_rapidssc -y \
      python=3.13 rapids=25.10 cuda-version=12.8 \
      cudnn cutensor cusparselt jupyterlab pip \
      pdf2image python-igraph scanpy scikit-misc \
-     gdown
+     gdown leidenalg
 
 $ conda activate SCscvi_rapidssc
 $ conda install cuda-cudart cuda-version=12
