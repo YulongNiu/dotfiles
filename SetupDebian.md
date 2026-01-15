@@ -144,6 +144,24 @@ $ sftp -o ProxyCommand="/usr/local/bin/cloudflared access ssh --hostname Subdoma
 $ ssh-copy-id -o ProxyCommand="/usr/local/bin/cloudflared access ssh --hostname Subdomain.Domain" Usrname@Subdomain.Domain
 ```
 
+### 2.4 update cloudflare docker
+
+Connect server directly with SSH, instead of using cloudflare tunnel.
+
+```
+$ sudo docker pull cloudflare/cloudflared:latest
+
+$ sudo docker stop cloudflared
+$ sudo docker rm cloudflared
+
+$ sudo docker run -d \
+         --restart unless-stopped \
+         --name cloudflared \
+         --network=host \
+         cloudflare/cloudflared:latest tunnel --no-autoupdate \
+         run --token MyToken
+```
+
 ## 3. R
 
 ### 3.1 install R
@@ -278,12 +296,12 @@ $ conda create -n SCscvi_rapidssc -y \
      python=3.13 rapids=25.10 cuda-version=12.8 \
      cudnn cutensor cusparselt jupyterlab pip \
      pdf2image python-igraph scanpy scikit-misc \
-     gdown leidenalg plotly kaleido
+     gdown leidenalg plotly
 
 $ conda activate SCscvi_rapidssc
 $ conda install cuda-cudart cuda-version=12
 $ pip install -U scvi-tools[cuda]
-$ pip install wget rapids-singlecell
+$ pip install wget kaleido cosg rapids-singlecell
 ```
 
 ## 6. Jupyter nootbook
