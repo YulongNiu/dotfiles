@@ -169,7 +169,7 @@ $ sudo docker run -d \
 ## install latest R from https://community.hetzner.com/tutorials/how-to-install-r-on-debian
 ```
 
-```
+```r
 ## install R/Bioconductor packages
 if (!require("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
@@ -199,7 +199,7 @@ remotes::install_github('satijalab/seurat-wrappers')
 
 ### 3.2 install R studio
 
-```
+```bash
 ## download libssl1.1 from https://snapshot.debian.org/package/openssl/1.1.1w-0%2Bdeb11u3/#libssl1.1_1.1.1w-0:2b:deb11u3
 $ sudo dpkg -i libssl1.1_1.1.1w-0+deb11u3_amd64.deb
 
@@ -209,11 +209,38 @@ $ sudo gdebi rstudio-server-2025.05.0-496-amd64.deb
 $ sudo systemctl enable rstudio-server
 ```
 
+### 3.3 install JupyterLab
+
+```bash
+## install
+conda create -n JupyterLab python=3.11 -y
+conda activate JupyterLab
+pip install -U pip
+pip install jupyterlab
+
+## config
+jupyter lab --generate-config
+python -c "from jupyter_server.auth import passwd; print(passwd())"
+```
+
+Modify or add in `~/.jupyter/jupyter_server_config.py` as:
+
+```python
+c.ServerApp.ip = "127.0.0.1"
+c.ServerApp.port = 8888
+c.ServerApp.open_browser = False
+
+c.ServerApp.token = ""
+c.PasswordIdentityProvider.hashed_password = "YourHashedPassword"
+
+c.ServerApp.allow_remote_access = True
+```
+
 ## 4. Load disks
 
 ### 4.1 Mount external disks
 
-```
+```bash
 ## list external disk
 $ lsblk
 
