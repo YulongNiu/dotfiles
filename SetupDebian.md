@@ -2,7 +2,7 @@
 
 ### 1.1 Add `sudo` group
 
-```
+```bash
 $ su -
 # apt-get install sudo
 # usermod -aG sudo UserName
@@ -23,7 +23,7 @@ deb https://deb.debian.org/debian bookworm-updates main contrib non-free non-fre
 deb-src https://deb.debian.org/debian bookworm-updates main contrib non-free non-free-firmware
 ```
 
-```
+```bash
 ## update system packages
 $ sudo apt-get update
 $ sudo apt-get upgrade
@@ -31,7 +31,7 @@ $ sudo apt-get upgrade
 
 ### 1.3 Recommended packages
 
-```
+```bash
 ## basic development
 $ sudo apt-get install git build-essential gfortran cmake gdal-bin libgdal-dev libgsl-dev imagemagick default-jdk parallel gpg gdebi-core libpoppler-cpp-dev libfontconfig1-dev libcairo2-dev libharfbuzz-dev libfribidi-dev libmagick++-dev ninja-build lowdown poppler-utils bc rsync
 
@@ -61,12 +61,12 @@ $ sudo apt-get install less eza
 
 ### 1.4 Nvidia driver
 
-```
+```bash
 ## reboot after installation
 $ sudo apt-get install nvidia-detect nvidia-smi nvidia-cuda-toolkit nvtop
 ```
 
-```
+```bash
 ## check nvidia driver format
 $ nvidia-detect
 
@@ -76,7 +76,7 @@ $ nvidia-smi
 
 ### 1.5 ssh
 
-```
+```bash
 $ sudo systemctl enable --now sshd.service
 $ sudo systemctl start sshd.service
 ```
@@ -87,7 +87,7 @@ $ sudo systemctl start sshd.service
 
 Install [Docker in Debian](https://docs.docker.com/engine/install/debian/#install-using-the-repository).
 
-```
+```bash
 ## run docker when start up
 $ sudo systemctl enable docker
 
@@ -96,7 +96,7 @@ $ sudo usermod -aG docker $USER
 $ newgrp docker
 ```
 
-```
+```bash
 ## list docker images
 $ docker images
 
@@ -162,7 +162,7 @@ $ sudo docker run -d \
          run --token MyToken
 ```
 
-## 3. R
+## 3. R and Python
 
 ### 3.1 install R
 ```
@@ -236,6 +236,36 @@ c.PasswordIdentityProvider.hashed_password = "YourHashedPassword"
 c.ServerApp.allow_remote_access = True
 ```
 
+Boot and start JupyterLab
+
+`sudo vim /etc/systemd/system/jupyter.service` and add:
+
+```
+[Unit]
+Description=JupyterLab
+After=network.target
+
+[Service]
+Type=simple
+User=niuyl
+WorkingDirectory=/home/UsrName
+Environment=HOME=/home/UsrName
+
+ExecStart=/home/UsrName/miniconda3/envs/JupyterLab/bin/jupyter-lab --config=/home/UsrName/.jupyter/jupyter_server_config.py
+
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+```
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl restart jupyter.service
+sudo systemctl enable jupyter.service
+```
+
 ## 4. Load disks
 
 ### 4.1 Mount external disks
@@ -254,7 +284,7 @@ $ udisksctl power-off -b /dev/SDE
 
 ### 4.2 Format USB stake
 
-```
+```bash
 ## list usb stake
 $ lsblk
 
