@@ -124,7 +124,7 @@ URL localhost:22
 
 Run docker automatically when start up:
 
-```
+```bash
 $ sudo docker run -d \
          --restart unless-stopped \
          --name cloudflared \
@@ -135,7 +135,7 @@ $ sudo docker run -d \
 
 ### 2.3 client
 
-```
+```bash
 $ ssh -o ProxyCommand="/usr/local/bin/cloudflared access ssh --hostname Subdomain.Domain" Usrname@Subdomain.Domain
 
 $ sftp -o ProxyCommand="/usr/local/bin/cloudflared access ssh --hostname Subdomain.Domain" Usrname@Subdomain.Domain
@@ -148,7 +148,7 @@ $ ssh-copy-id -o ProxyCommand="/usr/local/bin/cloudflared access ssh --hostname 
 
 Connect server directly with SSH, instead of using cloudflare tunnel.
 
-```
+```bash
 $ sudo docker pull cloudflare/cloudflared:latest
 
 $ sudo docker stop cloudflared
@@ -261,9 +261,9 @@ WantedBy=multi-user.target
 ```
 
 ```bash
-sudo systemctl daemon-reload
-sudo systemctl restart jupyter.service
-sudo systemctl enable jupyter.service
+$ sudo systemctl daemon-reload
+$ sudo systemctl restart jupyter.service
+$ sudo systemctl enable jupyter.service
 ```
 
 ## 4. Load disks
