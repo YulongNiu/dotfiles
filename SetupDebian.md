@@ -302,7 +302,7 @@ Follow [Miniconda install](https://www.anaconda.com/docs/getting-started/minicon
 
 ### 5.2 Single cell analysis
 
-```
+```bash
 ## scrublet for doublet detection
 $ conda create -n SCscrublet python=3.9 scrublet
 $ pip3 install igraph
@@ -365,7 +365,7 @@ $ pip install wget kaleido cosg rapids-singlecell
 
 Install JupterLab
 
-```
+```bash
 $ conda create -n Jupyter python=3.13 -y
 $ conda activate Jupyter
 $ conda install jupyterlab ipykernel nootbook -y
@@ -377,7 +377,7 @@ $ emacs ~/.jupyter/jupyter_lab_config.py
 
 ## 7. Mics
 
-```
+```bash
 ## list enabled programs
 $ systemctl list-unit-files --type=service | grep enabled
 
