@@ -367,9 +367,12 @@ $ conda create -n SCspatial -y \
     jupyterlab pip \
     matplotlib scanpy squidpy \
     spatialdata spatialdata-io spatialdata-plot \
-    reportlab
+    reportlab ipykernel ipywidgets jupyterlab_widgets
 
 $ conda activate SC_spatial
+$ python -m ipykernel install --user \
+    --name SC_spatial \
+    --display-name "Python (SC_spatial")
 
 $ python -c "import scanpy as sc, squidpy as sq; import spatialdata as sd; import spatialdata_io, spatialdata_plot; import reportlab; import matplotlib.pyplot as plt; print('OK')"
 ```
