@@ -359,6 +359,19 @@ $ conda activate SCscvi_rapidssc
 $ conda install cuda-cudart cuda-version=12
 $ pip install -U scvi-tools[cuda]
 $ pip install wget kaleido cosg rapids-singlecell
+
+## spatial transcriptome
+$ conda create -n SCspatial -y \
+    -c conda-forge -c bioconda \
+    python=3.12 \
+    jupyterlab pip \
+    matplotlib scanpy squidpy \
+    spatialdata spatialdata-io spatialdata-plot \
+    reportlab
+
+$ conda activate SC_spatial
+
+$ python -c "import scanpy as sc, squidpy as sq; import spatialdata as sd; import spatialdata_io, spatialdata_plot; import reportlab; import matplotlib.pyplot as plt; print('OK')"
 ```
 
 ## 6. Jupyter nootbook
