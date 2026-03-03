@@ -369,7 +369,11 @@ $ conda create -n SCspatial -y \
     spatialdata spatialdata-io spatialdata-plot \
     reportlab ipykernel ipywidgets jupyterlab_widgets
 
+$ pip install fsspec gcsfs leidenalg observable-jupyter clustergrammer2 loompy
+
 $ conda activate SC_spatial
+
+## jupyter book
 $ python -m ipykernel install --user \
     --name SC_spatial \
     --display-name "Python (SC_spatial")
