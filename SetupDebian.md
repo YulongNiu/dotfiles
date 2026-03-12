@@ -361,7 +361,7 @@ $ pip install -U scvi-tools[cuda]
 $ pip install wget kaleido cosg rapids-singlecell
 
 ## spatial transcriptome
-$ conda create -n SCspatial -y \
+$ conda create -n SC_spatial -y \
     -c conda-forge -c bioconda \
     python=3.12 \
     jupyterlab pip \
@@ -369,7 +369,7 @@ $ conda create -n SCspatial -y \
     spatialdata spatialdata-io spatialdata-plot \
     reportlab ipykernel ipywidgets jupyterlab_widgets
 
-$ pip install fsspec gcsfs leidenalg observable-jupyter clustergrammer2 loompy
+$ pip install fsspec gcsfs leidenalg observable-jupyter clustergrammer2 loompy UpSet
 
 $ conda activate SC_spatial
 
