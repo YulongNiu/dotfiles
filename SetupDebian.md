@@ -361,7 +361,7 @@ $ pip install -U scvi-tools[cuda]
 $ pip install wget kaleido cosg rapids-singlecell
 
 ## spatial transcriptome
-$ conda create -n SC_spatial -y \
+$ conda create -n SCspatial -y \
     -c conda-forge -c bioconda \
     python=3.12 \
     jupyterlab pip \
@@ -371,12 +371,12 @@ $ conda create -n SC_spatial -y \
 
 $ pip install fsspec gcsfs leidenalg observable-jupyter clustergrammer2 loompy UpSet
 
-$ conda activate SC_spatial
+$ conda activate SCspatial
 
 ## jupyter book
 $ python -m ipykernel install --user \
     --name SC_spatial \
-    --display-name "Python (SC_spatial")
+    --display-name "Python (SC_spatial)"
 
 $ python -c "import scanpy as sc, squidpy as sq; import spatialdata as sd; import spatialdata_io, spatialdata_plot; import reportlab; import matplotlib.pyplot as plt; print('OK')"
 ```
