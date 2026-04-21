@@ -423,6 +423,7 @@ python -m pip install \
   numpy pandas scipy matplotlib tifffile \
   anndata "scanpy[leiden]" \
   shapely pyproj pyogrio geopandas imagecodecs \
+  pyarrow \
   jupyterlab ipykernel notebook
 
 python -m pip install bin2cell[stardist]
