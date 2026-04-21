@@ -381,7 +381,7 @@ $ python -m ipykernel install --user \
 $ python -c "import scanpy as sc, squidpy as sq; import spatialdata as sd; import spatialdata_io, spatialdata_plot; import reportlab; import matplotlib.pyplot as plt; print('OK')"
 
 
-## segmentation
+## cellpose segmentation
 conda create -n VisiumHD_segment python=3.10 -y
 conda activate VisiumHD_segment
 python -m pip install --upgrade pip setuptools wheel
@@ -406,6 +406,26 @@ python -m pip install \
     shapely pyproj pyogrio geopandas \
     cellpose bin2cell \
     jupyterlab ipykernel notebook
+
+python -m ipykernel install --user --name VisiumHD_segment --display-name "Python (VisiumHD_segment)"
+
+## stardist segmentation
+conda create -n VisiumHD_segment python=3.10 -y
+conda activate VisiumHD_segment
+
+python -m pip install --upgrade pip setuptools wheel
+
+python -m pip install "tensorflow[and-cuda]"
+
+python -m pip install csbdeep stardist
+
+python -m pip install \
+  numpy pandas scipy matplotlib tifffile \
+  anndata "scanpy[leiden]" \
+  shapely pyproj pyogrio geopandas imagecodecs \
+  jupyterlab ipykernel notebook
+
+python -m pip install bin2cell[stardist]
 
 python -m ipykernel install --user --name VisiumHD_segment --display-name "Python (VisiumHD_segment)"
 ```
