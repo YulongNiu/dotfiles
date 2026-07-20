@@ -382,8 +382,8 @@ $ python -c "import scanpy as sc, squidpy as sq; import spatialdata as sd; impor
 
 
 ## cellpose segmentation
-conda create -n VisiumHD_segment python=3.10 -y
-conda activate VisiumHD_segment
+conda create -n VisiumHD_segment_bin2cell python=3.10 -y
+conda activate VisiumHD_segment_bin2cell
 python -m pip install --upgrade pip setuptools wheel
 
 python -m pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
@@ -404,10 +404,10 @@ python -m pip install \
     numpy pandas scipy matplotlib \
     tifffile anndata "scanpy[leiden]" \
     shapely pyproj pyogrio geopandas \
-    cellpose bin2cell \
+    cellpose "bin2cell[stardist]" \
     jupyterlab ipykernel notebook
 
-python -m ipykernel install --user --name VisiumHD_segment --display-name "Python (VisiumHD_segment)"
+python -m ipykernel install --user --name VisiumHD_segment_bin2cell --display-name "Python (VisiumHD_segment_bin2cell)"
 
 ## stardist segmentation
 conda create -n VisiumHD_segment python=3.10 -y
@@ -429,6 +429,74 @@ python -m pip install \
 python -m pip install bin2cell[stardist]
 
 python -m ipykernel install --user --name VisiumHD_segment --display-name "Python (VisiumHD_segment)"
+
+
+## bin2cell
+conda create -n VisiumHD_segment_bin2cell python=3.10 -y
+conda activate VisiumHD_segment_bin2cell
+
+python -m pip install --upgrade pip setuptools wheel
+
+python -m pip install "tensorflow[and-cuda]==2.15.*"
+
+python -m pip install csbdeep stardist
+python -m pip install \
+    numpy pandas scipy matplotlib \
+    tifffile anndata "scanpy[leiden]" \
+    shapely pyproj pyogrio geopandas \
+    imagecodecs \
+    "bin2cell[stardist]"
+
+python -m pip install jupyterlab ipykernel notebook
+python -m ipykernel install --user \
+    --name VisiumHD_segment_bin2cell \
+    --display-name "Python (VisiumHD_segment_bin2cell)"
+
+conda env config vars set LD_LIBRARY_PATH="$(find $CONDA_PREFIX/lib/python3.10/site-packages/nvidia -name '*.so*' | xargs -n1 dirname | sort -u | paste -sd: -)"
+conda env config vars set XLA_FLAGS="--xla_gpu_cuda_data_dir=$CONDA_PREFIX/lib/python3.10/site-packages/nvidia/cuda_nvcc"
+
+conda deactivate
+conda activate VisiumHD_segment_bin2cell
+
+## instanseg
+conda create -n instanseg python=3.11 -y
+conda activate instanseg
+python --version ## check python version
+
+python -m pip install --upgrade pip setuptools wheel
+python -m pip install \
+    torch==2.5.1 \
+    torchvision==0.20.1 \
+    torchaudio==2.5.1 \
+    --index-url https://download.pytorch.org/whl/cu121
+
+python - <<'PY'
+import torch
+
+print("PyTorch version:", torch.__version__)
+print("CUDA runtime:", torch.version.cuda)
+print("CUDA available:", torch.cuda.is_available())
+
+if torch.cuda.is_available():
+    print("GPU count:", torch.cuda.device_count())
+    print("GPU name:", torch.cuda.get_device_name(0))
+    print("Compute capability:", torch.cuda.get_device_capability(0))
+PY
+
+cd ~/Tools/
+git clone https://github.com/instanseg/instanseg.git
+cd instanseg
+
+python -m pip install -e .
+
+python - <<'PY'
+import torch
+
+print("PyTorch version:", torch.__version__)
+print("CUDA runtime:", torch.version.cuda)
+print("CUDA available:", torch.cuda.is_available())
+print("GPU:", torch.cuda.get_device_name(0) if torch.cuda.is_available() else "Unavailable")
+PY
 ```
 
 ## 6. Jupyter nootbook
