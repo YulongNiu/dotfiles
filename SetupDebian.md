@@ -497,6 +497,8 @@ print("CUDA runtime:", torch.version.cuda)
 print("CUDA available:", torch.cuda.is_available())
 print("GPU:", torch.cuda.get_device_name(0) if torch.cuda.is_available() else "Unavailable")
 PY
+
+python -m ipykernel install --user --name VisiumHD_segment --display-name "Python (instanseg)"
 ```
 
 ## 6. Jupyter nootbook
