@@ -459,11 +459,21 @@ conda deactivate
 conda activate VisiumHD_segment_bin2cell
 
 ## instanseg
+conda deactivate
+conda env remove -n instanseg
+
 conda create -n instanseg python=3.11 -y
 conda activate instanseg
 python --version ## check python version
 
 python -m pip install --upgrade pip setuptools wheel
+
+cd ~/Tools/
+git clone https://github.com/instanseg/instanseg.git
+cd instanseg
+
+pip install -e ".[full]"
+
 python -m pip install \
     torch==2.5.1 \
     torchvision==0.20.1 \
@@ -481,21 +491,6 @@ if torch.cuda.is_available():
     print("GPU count:", torch.cuda.device_count())
     print("GPU name:", torch.cuda.get_device_name(0))
     print("Compute capability:", torch.cuda.get_device_capability(0))
-PY
-
-cd ~/Tools/
-git clone https://github.com/instanseg/instanseg.git
-cd instanseg
-
-python -m pip install -e .
-
-python - <<'PY'
-import torch
-
-print("PyTorch version:", torch.__version__)
-print("CUDA runtime:", torch.version.cuda)
-print("CUDA available:", torch.cuda.is_available())
-print("GPU:", torch.cuda.get_device_name(0) if torch.cuda.is_available() else "Unavailable")
 PY
 
 python -m ipykernel install --user --name VisiumHD_segment --display-name "Python (instanseg)"
