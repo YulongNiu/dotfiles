@@ -432,6 +432,9 @@ python -m ipykernel install --user --name VisiumHD_segment --display-name "Pytho
 
 
 ## bin2cell
+conda deactivate
+conda env remove -n VisiumHD_segment_bin2cell
+
 conda create -n VisiumHD_segment_bin2cell python=3.10 -y
 conda activate VisiumHD_segment_bin2cell
 
