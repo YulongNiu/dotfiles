@@ -447,7 +447,7 @@ python -m pip install \
     numpy pandas scipy matplotlib \
     tifffile anndata "scanpy[leiden]" \
     shapely pyproj pyogrio geopandas \
-    imagecodecs \
+    imagecodecs zarr colorcet \
     "bin2cell[stardist]"
 
 python -m pip install jupyterlab ipykernel notebook

@@ -177,6 +177,10 @@ export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PA
 ## openblas
 export PKG_CONFIG_PATH="/usr/local/opt/openblas/lib/pkgconfig:$PKG_CONFIG_PATH"
 
+## icu4c@77
+export PATH="/usr/local/opt/icu4c@77/bin:$PATH"
+export PATH="/usr/local/opt/icu4c@77/sbin:$PATH"
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/Users/yulong/Tools/miniconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
