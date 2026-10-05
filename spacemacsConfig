@@ -32,7 +32,7 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(
+   '(react
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
@@ -627,6 +627,9 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
                             :size-limit-kb 1000))
   )
 
+  ;; aspell
+  (setq ispell-program-name "aspell")
+
 
 (defun dotspacemacs/user-load ()
   "Library to load while dumping.
@@ -726,10 +729,11 @@ This function is called at the very end of Spacemacs initialization."
    ;; Your init file should contain only one such instance.
    ;; If there is more than one, they won't work right.
    '(package-selected-packages
-     '(ace-jump-helm-line ace-link aggressive-indent all-the-icons auto-compile
-                          auto-highlight-symbol auto-yasnippet browse-at-remote
-                          centered-cursor-mode clean-aindent-mode code-cells
-                          code-review color-identifiers-mode column-enforce-mode
+     '(ace-jump-helm-line ace-link add-node-modules-path aggressive-indent
+                          all-the-icons auto-compile auto-highlight-symbol
+                          auto-yasnippet browse-at-remote centered-cursor-mode
+                          clean-aindent-mode code-cells code-review
+                          color-identifiers-mode column-enforce-mode
                           company-c-headers company-plsense company-web
                           cpp-auto-include cython-mode dap-mode define-word
                           devdocs diff-hl diminish dired-quick-sort disable-mouse
@@ -750,7 +754,7 @@ This function is called at the very end of Spacemacs initialization."
                           geiser-racket gendoxy ggtags gh-md git-link
                           git-messenger git-modes git-timemachine
                           gitignore-templates gnuplot golden-ratio google-c-style
-                          google-translate gptel helm-ag helm-c-yasnippet
+                          google-translate gptel grizzl helm-ag helm-c-yasnippet
                           helm-comint helm-company helm-css-scss helm-descbinds
                           helm-git-grep helm-gtags helm-ls-git helm-lsp helm-make
                           helm-mode-manager helm-org helm-org-rifle
@@ -758,10 +762,10 @@ This function is called at the very end of Spacemacs initialization."
                           helm-themes helm-xref hide-comnt highlight-indentation
                           highlight-numbers highlight-parentheses hl-todo
                           holy-mode hungry-delete hybrid-mode ibuffer-projectile
-                          impatient-mode indent-guide info+ inspector js-doc
-                          js2-refactor json-mode json-navigator json-reformat
-                          link-hint live-py-mode livid-mode lorem-ipsum
-                          lsp-origami lsp-ui macrostep magit-gptcommit
+                          impatient-mode import-js indent-guide info+ inspector
+                          js-doc js2-refactor json-mode json-navigator
+                          json-reformat link-hint live-py-mode livid-mode
+                          lorem-ipsum lsp-origami lsp-ui macrostep magit-gptcommit
                           markdown-toc monokai-theme multi-line multi-term
                           multi-vterm mwim nameless nerd-icons nodejs-repl
                           npm-mode nyan-mode open-junk-file org-cliplink
@@ -771,17 +775,18 @@ This function is called at the very end of Spacemacs initialization."
                           pip-requirements pipenv pippel poetry popwin prettier-js
                           pug-mode py-isort pydoc pyenv-mode pylookup pytest
                           quickrun rainbow-delimiters rainbow-identifiers
-                          rainbow-mode restart-emacs sass-mode scss-mode shell-pop
-                          slim-mode smeargle solarized-theme space-doc spaceline
-                          spacemacs-purpose-popwin spacemacs-whitespace-cleanup
-                          sphinx-doc srefactor string-edit-at-point
-                          string-inflection symbol-overlay symon tagedit
-                          term-cursor terminal-here toc-org treemacs-evil
-                          treemacs-icons-dired treemacs-magit treemacs-persp
-                          treemacs-projectile undo-fu undo-fu-session unfill
-                          vi-tilde-fringe volatile-highlights vundo web-beautify
-                          web-mode wgrep winum writeroom-mode ws-butler xkcd
-                          yaml-mode yasnippet-snippets zenburn-theme)))
+                          rainbow-mode restart-emacs rjsx-mode sass-mode scss-mode
+                          shell-pop slim-mode smeargle solarized-theme space-doc
+                          spaceline spacemacs-purpose-popwin
+                          spacemacs-whitespace-cleanup sphinx-doc srefactor
+                          string-edit-at-point string-inflection symbol-overlay
+                          symon tagedit term-cursor terminal-here tern toc-org
+                          treemacs-evil treemacs-icons-dired treemacs-magit
+                          treemacs-persp treemacs-projectile undo-fu
+                          undo-fu-session unfill vi-tilde-fringe
+                          volatile-highlights vundo web-beautify web-mode wgrep
+                          winum writeroom-mode ws-butler xkcd yaml-mode
+                          yasnippet-snippets zenburn-theme)))
   (custom-set-faces
    ;; custom-set-faces was added by Custom.
    ;; If you edit it by hand, you could mess it up, so be careful.
