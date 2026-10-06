@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 ;; -*- mode: emacs-lisp; lexical-binding: t -*-
 ;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
@@ -33,11 +35,6 @@ This function should only modify configuration layer settings."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(react
-     ;; ----------------------------------------------------------------
-     ;; Example of useful layers you may want to use right away.
-     ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
-     ;; `M-m f e R' (Emacs style) to install them.
-     ;; ----------------------------------------------------------------
      perl5
      (auto-completion :variables
                       auto-completion-enable-snippets-in-popup t
@@ -55,6 +52,8 @@ This function should only modify configuration layer settings."
      org
      git
      yaml
+     ;; Force Aspell in dotspacemacs/user-init to avoid Hunspell's expensive
+     ;; dictionary discovery from $HOME on macOS.
      spell-checking
      syntax-checking
      version-control
@@ -85,6 +84,7 @@ This function should only modify configuration layer settings."
      xkcd
      yulong)
 
+
    ;; List of additional packages that will be installed without being wrapped
    ;; in a layer (generally the packages are installed only and should still be
    ;; loaded using load/require/use-package in the user-config section below in
@@ -101,7 +101,7 @@ This function should only modify configuration layer settings."
    dotspacemacs-frozen-packages '()
 
    ;; A list of packages that will not be installed and loaded.
-   dotspacemacs-excluded-packages '()
+   dotspacemacs-excluded-packages '(org-contrib eat)
 
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
@@ -120,32 +120,9 @@ It should only modify the values of Spacemacs settings."
   ;; This setq-default sexp is an exhaustive list of all the supported
   ;; spacemacs settings.
   (setq-default
-   ;; If non-nil then enable support for the portable dumper. You'll need to
-   ;; compile Emacs 27 from source following the instructions in file
-   ;; EXPERIMENTAL.org at to root of the git repository.
-   ;;
-   ;; WARNING: pdumper does not work with Native Compilation, so it's disabled
-   ;; regardless of the following setting when native compilation is in effect.
-   ;;
-   ;; (default nil)
-   dotspacemacs-enable-emacs-pdumper nil
-
-   ;; Name of executable file pointing to emacs 27+. This executable must be
-   ;; in your PATH.
-   ;; (default "emacs")
-   dotspacemacs-emacs-pdumper-executable-file "emacs"
-
-   ;; Name of the Spacemacs dump file. This is the file will be created by the
-   ;; portable dumper in the cache directory under dumps sub-directory.
-   ;; To load it when starting Emacs add the parameter `--dump-file'
-   ;; when invoking Emacs 27.1 executable on the command line, for instance:
-   ;;   ./emacs --dump-file=$HOME/.emacs.d/.cache/dumps/spacemacs-27.1.pdmp
-   ;; (default (format "spacemacs-%s.pdmp" emacs-version))
-   dotspacemacs-emacs-dumper-dump-file (format "spacemacs-%s.pdmp" emacs-version)
-
    ;; Maximum allowed time in seconds to contact an ELPA repository.
    ;; (default 5)
-   dotspacemacs-elpa-timeout 5
+   dotspacemacs-elpa-timeout 70
 
    ;; Set `gc-cons-threshold' and `gc-cons-percentage' when startup finishes.
    ;; This is an advanced option and should not be changed unless you suspect
@@ -229,11 +206,11 @@ It should only modify the values of Spacemacs settings."
    ;; Show numbers before the startup list lines. (default t)
    dotspacemacs-show-startup-list-numbers t
 
-   ;; The minimum delay in seconds between number key presses. (default 0.4)
+   ;; The maximum delay in seconds between number key presses. (default 0.4)
    dotspacemacs-startup-buffer-multi-digit-delay 0.4
 
    ;; If non-nil, show file icons for entries and headings on Spacemacs home buffer.
-   ;; This has no effect in terminal or if "all-the-icons" package or the font
+   ;; This has no effect in terminal or if "nerd-icons" package or the font
    ;; is not installed. (default nil)
    dotspacemacs-startup-buffer-show-icons nil
 
@@ -263,13 +240,8 @@ It should only modify the values of Spacemacs settings."
    ;; package can be defined with `:package', or a theme can be defined with
    ;; `:location' to download the theme package, refer the themes section in
    ;; DOCUMENTATION.org for the full theme specifications.
-   dotspacemacs-themes '(spacemacs-light
-                         spacemacs-dark
-                         solarized-light
-                         solarized-dark
-                         leuven
-                         monokai
-                         zenburn)
+   dotspacemacs-themes '(spacemacs-dark
+                         spacemacs-light)
 
    ;; Set the theme for the Spaceline. Supported themes are `spacemacs',
    ;; `all-the-icons', `custom', `doom', `vim-powerline' and `vanilla'. The
@@ -285,15 +257,17 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-colorize-cursor-according-to-state t
 
    ;; Default font or prioritized list of fonts. This setting has no effect when
-   ;; running Emacs in terminal. The font set here will be used for default and
-   ;; fixed-pitch faces. The `:size' can be specified as
+   ;; running Emacs in terminal. The font set here will be used for `default' and
+   ;; `fixed-pitch' faces. The `:size' can be specified as
    ;; a non-negative integer (pixel size), or a floating-point (point size).
    ;; Point size is recommended, because it's device independent. (default 10.0)
    dotspacemacs-default-font '("Source Code Pro"
                                :size 20.0
                                :weight normal
-                               :width normal
-                               :powerline-scale 1.1)
+                               :width normal)
+
+   ;; Default icons font, it can be `all-the-icons' or `nerd-icons'.
+   dotspacemacs-default-icons-font 'all-the-icons
 
    ;; The leader key (default "SPC")
    dotspacemacs-leader-key "SPC"
@@ -314,10 +288,10 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-major-mode-leader-key ","
 
    ;; Major mode leader key accessible in `emacs state' and `insert state'.
-   ;; (default "C-M-m" for terminal mode, "<M-return>" for GUI mode).
+   ;; (default "C-M-m" for terminal mode, "M-<return>" for GUI mode).
    ;; Thus M-RET should work as leader key in both GUI and terminal modes.
    ;; C-M-m also should work in terminal mode, but not in GUI mode.
-   dotspacemacs-major-mode-emacs-leader-key (if window-system "<M-return>" "C-M-m")
+   dotspacemacs-major-mode-emacs-leader-key (if window-system "M-<return>" "C-M-m")
 
    ;; These variables control whether separate commands are bound in the GUI to
    ;; the key pairs `C-i', `TAB' and `C-m', `RET'.
@@ -382,6 +356,14 @@ It should only modify the values of Spacemacs settings."
    ;; displayed in the current window. (default nil)
    dotspacemacs-switch-to-buffer-prefers-purpose nil
 
+   ;; Make consecutive tab key presses after commands such as
+   ;; `spacemacs/alternate-buffer' (SPC TAB) cycle through previous
+   ;; buffers/windows/etc. Please see the option's docstring for more information.
+   ;; Set the option to t in order to enable cycling for all current and
+   ;; future cycling commands. Alternatively, choose a subset of the currently
+   ;; supported commands: '(alternate-buffer alternate-window). (default nil)
+   dotspacemacs-enable-cycling nil
+
    ;; Whether side windows (such as those created by treemacs or neotree)
    ;; are kept or minimized by `spacemacs/toggle-maximize-window' (SPC w m).
    ;; (default t)
@@ -393,9 +375,12 @@ It should only modify the values of Spacemacs settings."
    ;; Spacemacs on Windows. Refer the FAQ.org "load-hints" session for details.
    dotspacemacs-enable-load-hints nil
 
-   ;; If t, enable the `package-quickstart' feature to avoid full package
-   ;; loading, otherwise no `package-quickstart' attemption (default nil).
-   ;; Refer the FAQ.org "package-quickstart" section for details.
+   ;; If non-nil, enable the `package-quickstart' feature to avoid activating
+   ;; all package autoloads one by one.
+   ;; Requires building and maintaining a quickstart autoload file for all
+   ;; installed packages.
+   ;; Refer to the FAQ.org "package-quickstart" section for details.
+   ;; (default nil)
    dotspacemacs-enable-package-quickstart nil
 
    ;; If non-nil a progress bar is displayed when spacemacs is loading. This
@@ -452,6 +437,7 @@ It should only modify the values of Spacemacs settings."
    ;; when it reaches the top or bottom of the screen. (default t)
    dotspacemacs-smooth-scrolling t
 
+
    ;; Show the scroll bar while scrolling. The auto hide time can be configured
    ;; by setting this variable to a number. (default t)
    dotspacemacs-scroll-bar-while-scrolling t
@@ -491,7 +477,9 @@ It should only modify the values of Spacemacs settings."
 
    ;; If non-nil pressing the closing parenthesis `)' key in insert mode passes
    ;; over any automatically added closing parenthesis, bracket, quote, etc...
-   ;; This can be temporary disabled by pressing `C-q' before `)'. (default nil)
+   ;; This can be temporary disabled by pressing `C-q' before `)'.
+   ;; Only effective when `dotspacemacs-activate-smartparens-mode' is non-nil.
+   ;; Redundant when `smartparens-strict-mode' is enabled. (default nil)
    dotspacemacs-smart-closing-parenthesis nil
 
    ;; Select a scope to highlight delimiters. Possible values are `any',
@@ -515,15 +503,14 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-persistent-server nil
 
    ;; List of search tool executable names. Spacemacs uses the first installed
-   ;; tool of the list. Supported tools are `rg', `ag', `pt', `ack' and `grep'.
-   ;; (default '("rg" "ag" "pt" "ack" "grep"))
+   ;; tool of the list. Supported tools are `rg', `ag', `ack' and `grep'.
+   ;; (default '("rg" "ag" "ack" "grep"))
    dotspacemacs-search-tools '("rg" "ag" "ack" "grep")
 
    ;; The backend used for undo/redo functionality. Possible values are
-   ;; `undo-fu', `undo-redo' and `undo-tree' see also `evil-undo-system'.
+   ;; `undo-redo', `undo-fu' and `undo-tree' see also `evil-undo-system'.
    ;; Note that saved undo history does not get transferred when changing
-   ;; your undo system. The default is currently `undo-fu' as `undo-tree'
-   ;; is not maintained anymore and `undo-redo' is very basic."
+   ;; your undo system from or to undo-tree. (default `undo-redo')
    dotspacemacs-undo-system 'undo-fu
 
    ;; Format specification for setting the frame title.
@@ -615,7 +602,8 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
-  ;; line number
+
+  ;; Relative line numbers in selected modes.
   (setq-default dotspacemacs-line-numbers
                 '(:relative t
                             :enabled-for-modes prog-mode
@@ -625,19 +613,24 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
                             doc-view-mode
                             pdf-view-mode
                             :size-limit-kb 1000))
-  )
 
-  ;; aspell
+  ;; Use Aspell instead of Hunspell. This avoids the expensive Hunspell
+  ;; dictionary discovery from $HOME on macOS.
   (setq ispell-program-name "aspell")
 
+  ;; Package archives. Spacemacs reads these during layer/package setup, so
+  ;; configure them in user-init rather than user-config.
+  ;; BFSU mirrors are used for MELPA/GNU ELPA to improve download speed.
+  ;; NonGNU ELPA remains on its official HTTPS archive.
+  (setq configuration-layer-elpa-archives
+        '(("melpa"  . "https://melpa.org/packages/")
+          ("gnu"    . "https://elpa.gnu.org/packages/")
+          ("nongnu" . "https://elpa.nongnu.org/nongnu/")))
 
-(defun dotspacemacs/user-load ()
-  "Library to load while dumping.
-This function is called only while dumping Spacemacs configuration. You can
-`require' or `load' the libraries of your choice that will be included in the
-dump."
-  )
-
+  (setq package-archive-priorities
+        '(("melpa"  . 4)
+          ("nongnu" . 2)
+          ("gnu"    . 1))))
 
 (defun dotspacemacs/user-config ()
   "Configuration for user code:
@@ -645,6 +638,7 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
+
   ;; lsp-mode
   (setq gc-cons-threshold (* 128 1024 1024))
   (setq read-process-output-max (* 64 1024 1024))
@@ -653,10 +647,12 @@ before packages are loaded."
   (global-set-key (kbd "C-x u") 'vundo)
 
   ;; magit-gptcommit
+  ;; Defer llm setup until the package is actually available. This keeps a
+  ;; temporary ELPA/MELPA download failure from cascading into startup errors.
   (use-package llm
-    :init
-    (require 'llm-gemini)
+    :if (locate-library "llm")
     :config
+    (require 'llm-gemini)
     (setopt llm-gemini-provider
             (make-llm-gemini
              :key (auth-info-password
@@ -668,23 +664,24 @@ before packages are loaded."
     (llm-warn-on-nonfree nil))
 
   (use-package magit-gptcommit
+    :if (locate-library "magit-gptcommit")
     :after magit
     :bind (:map git-commit-mode-map
                 ("C-c C-g" . magit-gptcommit-commit-accept))
     :custom
     (magit-gptcommit-llm-provider llm-gemini-provider)
     (magit-gptcommit-mode 1)
-    (magit-gptcommit-status-buffer-setup)
-    )
+    (magit-gptcommit-status-buffer-setup))
 
   ;; python interpreter
-  (setq python-shell-interpreter "/Users/yulong/Tools/miniconda/envs/SCscrublet/bin/python")
+  (setq python-shell-interpreter
+        "/Users/yulong/Tools/miniconda/envs/SCscrublet/bin/python")
 
   ;; hs-mode
   (add-hook 'prog-mode-hook 'hs-minor-mode)
   (add-hook 'ess-mode-hook 'hs-minor-mode)
 
-  ;; sp
+  ;; smartparens
   (add-hook 'prog-mode-hook 'smartparens-mode)
   (add-hook 'c-mode-hook 'smartparens-mode)
   (add-hook 'c++-mode-hook 'smartparens-mode)
@@ -701,96 +698,17 @@ before packages are loaded."
   (defun my-web-mode-hook ()
     "Hooks for Web mode."
     (setq web-mode-markup-indent-offset 2))
-  (add-hook 'web-mode-hook  'my-web-mode-hook)
+  (add-hook 'web-mode-hook 'my-web-mode-hook)
 
   ;; Chinese fonts
   (dolist (charset '(kana han symbol cjk-misc bopomofo))
     (set-fontset-font (frame-parameter nil 'font)
-                      charset (font-spec :family "文泉驿等宽微米黑"
-                                         :size 16)))
+                      charset
+                      (font-spec :family "文泉驿等宽微米黑" :size 16)))
 
   ;; Rmd file with markdown-mode
-  (setq auto-mode-alist
-        (append
-         '(("\\.Rmd\\'" . markdown-mode))
-         auto-mode-alist))
-  )
+  (add-to-list 'auto-mode-alist '("\\.Rmd\\'" . markdown-mode)))
+
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
-(defun dotspacemacs/emacs-custom-settings ()
-  "Emacs custom settings.
-This is an auto-generated function, do not modify its content directly, use
-Emacs customize menu instead.
-This function is called at the very end of Spacemacs initialization."
-  (custom-set-variables
-   ;; custom-set-variables was added by Custom.
-   ;; If you edit it by hand, you could mess it up, so be careful.
-   ;; Your init file should contain only one such instance.
-   ;; If there is more than one, they won't work right.
-   '(package-selected-packages
-     '(ace-jump-helm-line ace-link add-node-modules-path aggressive-indent
-                          all-the-icons auto-compile auto-highlight-symbol
-                          auto-yasnippet browse-at-remote centered-cursor-mode
-                          clean-aindent-mode code-cells code-review
-                          color-identifiers-mode column-enforce-mode
-                          company-c-headers company-plsense company-web
-                          cpp-auto-include cython-mode dap-mode define-word
-                          devdocs diff-hl diminish dired-quick-sort disable-mouse
-                          disaster docker dockerfile-mode dotenv-mode drag-stuff
-                          dumb-jump eat edit-indirect elisp-def elisp-demos
-                          elisp-slime-nav ellama emmet-mode emr esh-help
-                          eshell-prompt-extras eshell-z ess-R-data-view
-                          eval-sexp-fu evil-anzu evil-args evil-cleverparens
-                          evil-collection evil-easymotion evil-escape
-                          evil-evilified-state evil-exchange evil-goggles
-                          evil-iedit-state evil-indent-plus evil-lion
-                          evil-lisp-state evil-matchit evil-mc evil-nerd-commenter
-                          evil-numbers evil-org evil-surround evil-textobj-line
-                          evil-tutor evil-unimpaired evil-visual-mark-mode
-                          evil-visualstar expand-region eyebrowse fancy-battery
-                          flycheck-elsa flycheck-package flycheck-pos-tip
-                          flyspell-correct-helm geiser-chez geiser-guile
-                          geiser-racket gendoxy ggtags gh-md git-link
-                          git-messenger git-modes git-timemachine
-                          gitignore-templates gnuplot golden-ratio google-c-style
-                          google-translate gptel grizzl helm-ag helm-c-yasnippet
-                          helm-comint helm-company helm-css-scss helm-descbinds
-                          helm-git-grep helm-gtags helm-ls-git helm-lsp helm-make
-                          helm-mode-manager helm-org helm-org-rifle
-                          helm-projectile helm-purpose helm-pydoc helm-swoop
-                          helm-themes helm-xref hide-comnt highlight-indentation
-                          highlight-numbers highlight-parentheses hl-todo
-                          holy-mode hungry-delete hybrid-mode ibuffer-projectile
-                          impatient-mode import-js indent-guide info+ inspector
-                          js-doc js2-refactor json-mode json-navigator
-                          json-reformat link-hint live-py-mode livid-mode
-                          lorem-ipsum lsp-origami lsp-ui macrostep magit-gptcommit
-                          markdown-toc monokai-theme multi-line multi-term
-                          multi-vterm mwim nameless nerd-icons nodejs-repl
-                          npm-mode nyan-mode open-junk-file org-cliplink
-                          org-contrib org-download org-mime org-pomodoro
-                          org-present org-projectile org-rich-yank org-superstar
-                          orgit-forge overseer paradox password-generator pcre2el
-                          pip-requirements pipenv pippel poetry popwin prettier-js
-                          pug-mode py-isort pydoc pyenv-mode pylookup pytest
-                          quickrun rainbow-delimiters rainbow-identifiers
-                          rainbow-mode restart-emacs rjsx-mode sass-mode scss-mode
-                          shell-pop slim-mode smeargle solarized-theme space-doc
-                          spaceline spacemacs-purpose-popwin
-                          spacemacs-whitespace-cleanup sphinx-doc srefactor
-                          string-edit-at-point string-inflection symbol-overlay
-                          symon tagedit term-cursor terminal-here tern toc-org
-                          treemacs-evil treemacs-icons-dired treemacs-magit
-                          treemacs-persp treemacs-projectile undo-fu
-                          undo-fu-session unfill vi-tilde-fringe
-                          volatile-highlights vundo web-beautify web-mode wgrep
-                          winum writeroom-mode ws-butler xkcd yaml-mode
-                          yasnippet-snippets zenburn-theme)))
-  (custom-set-faces
-   ;; custom-set-faces was added by Custom.
-   ;; If you edit it by hand, you could mess it up, so be careful.
-   ;; Your init file should contain only one such instance.
-   ;; If there is more than one, they won't work right.
-   )
-  )
