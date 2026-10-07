@@ -204,7 +204,7 @@ remotes::install_github('satijalab/seurat-wrappers')
 $ sudo dpkg -i libssl1.1_1.1.1w-0+deb11u3_amd64.deb
 
 ## download rstudio server from https://posit.co/download/rstudio-server/
-$ sudo gdebi rstudio-server-2025.05.0-496-amd64.deb
+$ sudo gdebi rstudio-server-2026.09.0-174-amd64.deb
 
 $ sudo systemctl enable rstudio-server
 ```
