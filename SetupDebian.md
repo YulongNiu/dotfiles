@@ -496,7 +496,7 @@ if torch.cuda.is_available():
     print("Compute capability:", torch.cuda.get_device_capability(0))
 PY
 
-python -m ipykernel install --user --name VisiumHD_segment --display-name "Python (instanseg)"
+python -m ipykernel install --user --name instanseg --display-name "Python (instanseg)"
 ```
 
 ## 6. Jupyter nootbook
