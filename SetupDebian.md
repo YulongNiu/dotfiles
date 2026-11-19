@@ -409,7 +409,8 @@ python -m pip install \
 
 python -m ipykernel install --user --name VisiumHD_segment_bin2cell --display-name "Python (VisiumHD_segment_bin2cell)"
 
-## stardist segmentation
+
+## ~~~~~~~~~~~~~~~~~~~~~stardist segmentation~~~~~~~~~~~~~~~~~
 conda create -n VisiumHD_segment python=3.10 -y
 conda activate VisiumHD_segment
 
@@ -429,7 +430,7 @@ python -m pip install \
 python -m pip install bin2cell[stardist]
 
 python -m ipykernel install --user --name VisiumHD_segment --display-name "Python (VisiumHD_segment)"
-
+##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ## bin2cell
 conda deactivate
@@ -461,7 +462,7 @@ conda env config vars set XLA_FLAGS="--xla_gpu_cuda_data_dir=$CONDA_PREFIX/lib/p
 conda deactivate
 conda activate VisiumHD_segment_bin2cell
 
-## instanseg
+## ~~~~~~~~~~~~~~~~~~~~~instanseg~~~~~~~~~~~~~~~~~~~~
 conda deactivate
 conda env remove -n instanseg
 
@@ -497,6 +498,7 @@ if torch.cuda.is_available():
 PY
 
 python -m ipykernel install --user --name instanseg --display-name "Python (instanseg)"
+##~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 
 ## 6. Jupyter nootbook
