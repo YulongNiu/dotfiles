@@ -421,7 +421,8 @@ python -m pip install "tensorflow[and-cuda]"
 python -m pip install csbdeep stardist
 
 python -m pip install \
-  numpy pandas scipy matplotlib tifffile \
+  numpy pandas scipy matplotlib \
+  tifffile zarr \
   anndata "scanpy[leiden]" \
   shapely pyproj pyogrio geopandas imagecodecs \
   pyarrow \
