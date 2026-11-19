@@ -425,7 +425,7 @@ python -m pip install \
   tifffile zarr \
   anndata "scanpy[leiden]" \
   shapely pyproj pyogrio geopandas imagecodecs \
-  pyarrow \
+  pyarrow ipywidgets \
   jupyterlab ipykernel notebook
 
 python -m pip install bin2cell[stardist]
