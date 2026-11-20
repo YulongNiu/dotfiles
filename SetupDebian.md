@@ -447,7 +447,8 @@ python -m pip install "tensorflow[and-cuda]==2.15.*"
 python -m pip install csbdeep stardist
 python -m pip install \
     numpy pandas scipy matplotlib \
-    tifffile anndata "scanpy[leiden]" \
+    tifffile tiffslide \
+    anndata "scanpy[leiden]" \
     shapely pyproj pyogrio geopandas \
     imagecodecs zarr colorcet \
     "bin2cell[stardist]"
@@ -471,7 +472,7 @@ conda create -n instanseg python=3.11 -y
 conda activate instanseg
 python --version ## check python version
 
-python -m pip install --upgrade pip setuptools wheel
+python -m pip install --upgrade pip setuptools wheel geopandas
 
 cd ~/Tools/
 git clone https://github.com/instanseg/instanseg.git
